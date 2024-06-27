@@ -26,9 +26,9 @@ module.exports = {
     'prettier/prettier': 'error',
 
     // 임포트 관련
-    'import/extensions' : 'off',
-    'import/prefer-default-export' : 'off',
-    'import/order' : 'off',
+    'import/extensions': 'off',
+    'import/prefer-default-export': 'off',
+    'import/order': 'off',
     'import/no-extraneous-dependencies': 'off',
     'import/extensions': [
       'error',
@@ -44,16 +44,18 @@ module.exports = {
     // 리액트 관련
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
-    'jsx-a11y/heading-has-content' : 'off',
+    'react/function-component-definition': 'off',
+    'jsx-a11y/heading-has-content': 'off',
+    'react/jsx-no-constructed-context-values': 'off',
     'react/jsx-props-no-spreading': 'off',
     'react/jsx-filename-extension': [
       1,
       { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
     ],
-    
+
     // 기타 관련
     'no-undef': 'off',
-    'no-console' : 'off',
+    'no-console': 'off',
   },
 
   settings: {
@@ -61,8 +63,8 @@ module.exports = {
       version: 'detect',
     },
     'import/resolver': {
-      node : {
-        extensions: ['.js','.jsx','.ts','.tsx']
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
       typescript: {
         alwaysTryTypes: true,

@@ -3,7 +3,7 @@ import { doc, setDoc } from 'firebase/firestore';
 import { User } from 'lucide-react';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { db } from '@/firebase';
+import { db } from '@/config/firebase';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';

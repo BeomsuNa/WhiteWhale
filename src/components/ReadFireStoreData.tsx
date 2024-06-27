@@ -5,7 +5,7 @@ import {
   Timestamp,
 } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
-import { db } from '@/firebase';
+import { db } from '@/config/firebase';
 
 interface Product {
   createdAt: Timestamp;

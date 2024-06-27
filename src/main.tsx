@@ -7,6 +7,7 @@ import SignUp from './pages/SignUpPage.tsx';
 import Basket from './pages/BasketPage.tsx';
 import BuyProduct from './pages/BuyProductPage.tsx';
 import Login from './pages/LoginPage.tsx';
+import MyPage from './pages/MyPage.tsx';
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: '/Login', element: <Login /> },
+      { path: '/MyPage', element: <MyPage /> },
       { path: '/SignUp', element: <SignUp /> },
       { path: '/Basket', element: <Basket /> },
       { path: '/BuyProdcut', element: <BuyProduct /> },

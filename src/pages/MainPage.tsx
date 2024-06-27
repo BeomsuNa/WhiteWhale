@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useFetchData } from '@/components/ReadFireStoreData';
+import Header from '@/components/Header';
 
 const MainPage: React.FC = () => {
   const { data, loading, error } = useFetchData('products');
@@ -20,8 +21,8 @@ const MainPage: React.FC = () => {
   }, [loading, error, data]);
 
   return (
-    <div>
-      메인페이지입니다.
+    <div className="w-full h-full">
+      <Header />
       <button type="button" onClick={goToLogin}>
         로그인
       </button>
