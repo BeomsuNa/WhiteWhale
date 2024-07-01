@@ -1,13 +1,15 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
-import App from './App.tsx';
+import App from './App';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import SignUp from './pages/SignUpPage.tsx';
-import Basket from './pages/BasketPage.tsx';
-import BuyProduct from './pages/BuyProductPage.tsx';
-import Login from './pages/LoginPage.tsx';
-import MyPage from './pages/MyPage.tsx';
+import SignUp from './pages/SignUpPage';
+import Basket from './pages/BasketPage';
+import BuyProduct from './pages/BuyProductPage';
+import Login from './pages/LoginPage';
+import MyPage from './pages/MyPage';
+import OrderStatusPage from './pages/OrderStatusPage';
+import DeliveryStatusPage from './pages/DeliveryStatusPage';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +18,8 @@ const router = createBrowserRouter([
     children: [
       { path: '/Login', element: <Login /> },
       { path: '/MyPage', element: <MyPage /> },
+      { path: '/OrderStatusPage', element: <OrderStatusPage /> },
+      { path: '/DeliveryStatusPage', element: <DeliveryStatusPage /> },
       { path: '/SignUp', element: <SignUp /> },
       { path: '/Basket', element: <Basket /> },
       { path: '/BuyProdcut', element: <BuyProduct /> },

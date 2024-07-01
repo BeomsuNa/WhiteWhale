@@ -56,6 +56,7 @@ module.exports = {
     // 기타 관련
     'no-undef': 'off',
     'no-console': 'off',
+    'no-unused-vars': 'off',
   },
 
   settings: {

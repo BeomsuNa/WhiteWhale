@@ -1,14 +1,14 @@
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
-import { User } from 'lucide-react';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { db } from '@/config/firebase';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
 
-interface User {
+interface UserInfo {
   email: string;
   id: string;
   isSeller: boolean;
@@ -21,11 +21,15 @@ function SignUpPage() {
   const [passWord, setPassWord] = useState('');
   const [checkpassWord, setCheckPassWord] = useState('');
   const [nickName, setNickName] = useState('');
+  const [checked, setIsChecked] = useState(false);
   const navigate = useNavigate();
   const auth = getAuth();
 
   const goToMainPage = () => {
     navigate('/');
+  };
+  const handleCheckBox = () => {
+    setIsChecked(!checked);
   };
   const onRegister = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -50,10 +54,10 @@ function SignUpPage() {
       console.log('회원가입의 데이터는?', signUpRegister);
       const userId = signUpRegister.user.uid;
       const userDocRef = doc(db, 'User', userId);
-      const userData: User = {
+      const userData: UserInfo = {
         email,
         id: userId,
-        isSeller: false,
+        isSeller: checked,
         nickname: nickName,
         password: passWord,
       };
@@ -96,7 +100,8 @@ function SignUpPage() {
           value={nickName}
           onChange={e => setNickName(e.target.value)}
         />
-
+        <Checkbox checked={checked} onCheckedChange={handleCheckBox} />
+        <p>판매자입니까?{checked ? 'check' : 'not check'}</p>
         <div>
           <Button type="submit">회원가입</Button>
           <Button onClick={goToMainPage}>돌아가기</Button>

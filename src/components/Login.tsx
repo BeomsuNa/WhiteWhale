@@ -1,8 +1,4 @@
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  UserCredential,
-} from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useEffect } from 'react';
 
 interface LoginProps {
@@ -16,7 +12,7 @@ const Login: React.FC<LoginProps> = ({ email, passWord, onLoginSuccess }) => {
     const auth = getAuth();
     const Signin = async () => {
       try {
-        const UserCredential: UserCredential = await signInWithEmailAndPassword(
+        const UserCredential = await signInWithEmailAndPassword(
           auth,
           email,
           passWord,
