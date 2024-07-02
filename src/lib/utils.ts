@@ -1,4 +1,5 @@
 import { type ClassValue, clsx } from 'clsx';
+import { Timestamp } from 'firebase/firestore';
 import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
@@ -8,4 +9,16 @@ export function cn(...inputs: ClassValue[]) {
 export interface User {
   nickname: string;
   isSeller: boolean;
+}
+
+export interface Product {
+  createdAt: Timestamp;
+  id: string;
+  productCategory: string;
+  productDescription: string;
+  productName: number;
+  productPrice: number;
+  productQuantity: number;
+  sellerId: number;
+  updatedAt: Timestamp;
 }
