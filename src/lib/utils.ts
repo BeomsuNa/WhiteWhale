@@ -16,9 +16,10 @@ export interface Product {
   id: string;
   productCategory: string;
   productDescription: string;
-  productName: number;
+  productName: string;
   productPrice: number;
   productQuantity: number;
   sellerId: number;
   updatedAt: Timestamp;
+  imageUrl?: string;
 }

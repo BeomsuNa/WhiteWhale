@@ -10,6 +10,7 @@ import Login from './pages/LoginPage';
 import MyPage from './pages/MyPage';
 import OrderStatusPage from './pages/OrderStatusPage';
 import DeliveryStatusPage from './pages/DeliveryStatusPage';
+import UploadProductPage from './pages/UploadProductPage';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       { path: '/Login', element: <Login /> },
       { path: '/MyPage', element: <MyPage /> },
       { path: '/OrderStatusPage', element: <OrderStatusPage /> },
+      { path: '/UploadProductPage', element: <UploadProductPage /> },
       { path: '/DeliveryStatusPage', element: <DeliveryStatusPage /> },
       { path: '/SignUp', element: <SignUp /> },
       { path: '/Basket', element: <Basket /> },

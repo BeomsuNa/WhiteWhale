@@ -34,7 +34,7 @@ const LoginInfoUser: React.FC<Props> = ({ nickname, handleLogOutButton }) => {
           <button
             type="button"
             className="lg:hover:underline"
-            onClick={() => navigate('/OrderStatusPage')}
+            onClick={() => navigate('/DeliveryStatusPage')}
           >
             주문현황
           </button>

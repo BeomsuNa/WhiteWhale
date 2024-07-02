@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useFetchData } from '@/components/FetchData';
+import { useFetchData } from '@/components/hooks/FetchData';
 import Header from '@/components/Header';
 
 const MainPage: React.FC = () => {

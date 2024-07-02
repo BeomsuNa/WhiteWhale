@@ -1,3 +1,5 @@
+const { assert } = require("console");
+
 module.exports = {
   root: true,
   env: { browser: true, es2021: true, node: true },
@@ -24,6 +26,14 @@ module.exports = {
       { allowConstantExport: true },
     ],
     'prettier/prettier': 'error',
+    'jsx-a11y/label-has-associated-control':[
+      'error',
+      {
+        assert: 'either',
+        depth:3,
+
+      }
+    ],
 
     // 임포트 관련
     'import/extensions': 'off',
