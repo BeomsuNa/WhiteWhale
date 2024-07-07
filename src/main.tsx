@@ -11,20 +11,22 @@ import MyPage from './pages/MyPage';
 import OrderStatusPage from './pages/OrderStatusPage';
 import DeliveryStatusPage from './pages/DeliveryStatusPage';
 import UploadProductPage from './pages/UploadProductPage';
+import ProductEditForm from './pages/ProductEditForm';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
     children: [
-      { path: '/Login', element: <Login /> },
-      { path: '/MyPage', element: <MyPage /> },
-      { path: '/OrderStatusPage', element: <OrderStatusPage /> },
-      { path: '/UploadProductPage', element: <UploadProductPage /> },
-      { path: '/DeliveryStatusPage', element: <DeliveryStatusPage /> },
-      { path: '/SignUp', element: <SignUp /> },
-      { path: '/Basket', element: <Basket /> },
-      { path: '/BuyProdcut', element: <BuyProduct /> },
+      { path: '/login', element: <Login /> },
+      { path: '/mypage', element: <MyPage /> },
+      { path: '/orderstatuspage', element: <OrderStatusPage /> },
+      { path: '/edit/:productId', element: <ProductEditForm /> },
+      { path: '/uploadproductpage', element: <UploadProductPage /> },
+      { path: '/deliverystatuspage', element: <DeliveryStatusPage /> },
+      { path: '/signup', element: <SignUp /> },
+      { path: '/basket', element: <Basket /> },
+      { path: '/buyprodcut', element: <BuyProduct /> },
     ],
   },
 ]);

@@ -9,21 +9,17 @@ import {
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  User,
 } from 'firebase/auth';
-import { doc, getDoc } from 'firebase/firestore';
-import { db } from '@/config/firebase';
-
-interface User {
-  email: string;
-  isSeller: boolean;
-  nickname: string;
-}
+import { useQuery, useQueryClient } from 'react-query';
+import fetchUser from '@/hooks/FetchUser';
 
 interface AuthContextType {
   isLoggedIn: boolean;
   user: User | null;
   login: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
+  firebaseUser: User | null;
 }
 
 // 초기 값 설정
@@ -31,58 +27,45 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 // AuthProvider 컴포넌트
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-  const [user, setUser] = useState<User | null>(null);
+  const queryClient = useQueryClient();
+  const auth = getAuth();
+  const [firebaseUser, setFirebaseUser] = useState<User | null>(null);
 
   useEffect(() => {
-    const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, async firebaseUser => {
-      if (firebaseUser) {
-        const userDoc = await getDoc(doc(db, 'User', firebaseUser.uid));
-        if (userDoc.exists()) {
-          setUser({
-            email: firebaseUser.email!,
-            isSeller: userDoc.data().isSeller,
-            nickname: userDoc.data().nickname,
-          });
-          setIsLoggedIn(true);
-          console.log('정보가 받아져서 완료되었습니다!');
-        }
+    const unsubscribe = onAuthStateChanged(auth, user => {
+      if (user) {
+        setFirebaseUser(user);
+        queryClient.setQueryData('user', user);
+        console.log('로그인 성공');
       } else {
-        setUser(null);
-        setIsLoggedIn(false);
-        console.log('정보를 받을 수 없었습니다!');
+        setFirebaseUser(null);
+        queryClient.setQueryData('user', null);
+        console.error('데이터를 받지 못해 로그인에 실패했습니다.');
       }
     });
     return () => unsubscribe();
-  }, []);
+  }, [auth, queryClient]);
 
   const login = async (email: string, password: string) => {
-    const auth = getAuth();
     await signInWithEmailAndPassword(auth, email, password);
-    const firebaseUser = auth.currentUser;
-    if (firebaseUser) {
-      const userDoc = await getDoc(doc(db, 'User', firebaseUser.uid));
-      if (userDoc.exists()) {
-        setUser({
-          email: firebaseUser.email!,
-          isSeller: userDoc.data().isSeller,
-          nickname: userDoc.data().nickname,
-        });
-        setIsLoggedIn(true);
-      }
-    }
+    queryClient.invalidateQueries('user');
   };
 
   const logout = async () => {
-    const auth = getAuth();
     await auth.signOut();
-    setUser(null);
-    setIsLoggedIn(false);
+    queryClient.invalidateQueries('user');
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, user, login, logout }}>
+    <AuthContext.Provider
+      value={{
+        login,
+        logout,
+        firebaseUser,
+        isLoggedIn: !!firebaseUser,
+        user: null,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
@@ -94,5 +77,25 @@ export const useAuth = () => {
   if (!context) {
     throw new Error('useAuth must be used within an AuthProvider');
   }
-  return context;
+
+  const { login, logout, firebaseUser } = context;
+
+  const {
+    data: user,
+    isLoading: userLoading,
+    error,
+  } = useQuery(
+    ['userData', firebaseUser?.uid],
+    () => fetchUser(firebaseUser as User), // firebaseUser 객체를 인수로 전달
+    { enabled: !!firebaseUser },
+  );
+
+  return {
+    isLoggedIn: !!firebaseUser,
+    user,
+    login,
+    logout,
+    isLoading: userLoading,
+    error,
+  };
 };

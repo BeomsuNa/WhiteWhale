@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
-import { useFetchData } from '@/components/hooks/FetchData';
-import Header from '@/components/Header';
+import { useFetchData } from '@/hooks/UseFetchData';
+import MainPageLayOut from './MainPageLayOut';
+import MainProductCard from '@/components/ui/MainProductCard';
 
-const MainPage: React.FC = () => {
+const BackGroundPage: React.FC = () => {
   const { data, error } = useFetchData('Product');
 
   useEffect(() => {
@@ -15,9 +16,9 @@ const MainPage: React.FC = () => {
 
   return (
     <div className="w-full" id="mainPageSection">
-      <Header />
+      <MainPageLayOut />
     </div>
   );
 };
 
-export default MainPage;
+export default BackGroundPage;

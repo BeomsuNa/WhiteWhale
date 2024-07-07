@@ -23,3 +23,8 @@ export interface Product {
   updatedAt: Timestamp;
   imageUrl?: string;
 }
+
+export interface FetchProductsResult {
+  products: Product[];
+  nextPage: string | null;
+}

@@ -1,9 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
-import LoginInfoGuest from './LoginInfoGuest';
-import LoginInfoSeller from './LoginInfoSeller';
-import LoginInfoUser from './LoginInfoUser';
+import LoginInfoGuest from '../sections/Login/LoginInfoGuest';
+import LoginInfoSeller from '../sections/Login/LoginInfoSeller';
+import LoginInfoUser from '../sections/Login/LoginInfoUser';
+import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
 
 const Header = () => {
   const { user, logout } = useAuth();
@@ -11,6 +12,10 @@ const Header = () => {
 
   const handleLogOutButton = () => {
     logout();
+    navigate('/');
+  };
+
+  const handleMainPage = () => {
     navigate('/');
   };
 
@@ -35,8 +40,15 @@ const Header = () => {
   };
 
   return (
-    <div className="w-full flex justify-between p-4 bg-gray-100">
-      <p className="text-lg font-bold">WhiteWhale</p>
+    <div className="w-full flex justify-between p-4 bg-rgb(55, 58, 64) text-white">
+      <Avatar>
+        <AvatarImage
+          src="logo/Elegant.png"
+          className="w-10 h-10"
+          onClick={handleMainPage}
+        />
+        <AvatarFallback>불러오는 중...</AvatarFallback>
+      </Avatar>
       {getloginInfoSection()}
     </div>
   );

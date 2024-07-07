@@ -1,14 +1,20 @@
 import { Product } from '@/lib/utils';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface ProductProps {
   product: Product;
 }
 
 const ProductCard: React.FC<ProductProps> = ({ product }) => {
-  console.log('Product Image URL:', product); // 추가된 로그
+  const navigate = useNavigate();
+
+  const handleEditClick = () => {
+    navigate(`/edit/${product.id}`);
+  };
+
   return (
-    <div className="w-full h-1/5 flex pt-2">
+    <div className="w-full h-1/5 flex pt-2" onClick={handleEditClick}>
       <img
         src={product.imageUrl}
         alt={product.productName}

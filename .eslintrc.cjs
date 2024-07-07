@@ -1,4 +1,4 @@
-const { assert } = require("console");
+const { assert } = require('console');
 
 module.exports = {
   root: true,
@@ -26,13 +26,12 @@ module.exports = {
       { allowConstantExport: true },
     ],
     'prettier/prettier': 'error',
-    'jsx-a11y/label-has-associated-control':[
+    'jsx-a11y/label-has-associated-control': [
       'error',
       {
         assert: 'either',
-        depth:3,
-
-      }
+        depth: 3,
+      },
     ],
 
     // 임포트 관련
@@ -67,6 +66,7 @@ module.exports = {
     'no-undef': 'off',
     'no-console': 'off',
     'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'warn',
   },
 
   settings: {

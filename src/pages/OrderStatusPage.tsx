@@ -1,16 +1,32 @@
-import { useFetchData } from '@/components/hooks/FetchData';
+import { useFetchData, useFetchInfiniteProducts } from '@/hooks/UseFetchData';
 import { Button } from '@/components/ui/button';
 import { useInView } from 'react-intersection-observer';
 import { Product } from '@/lib/utils';
 import ProductCard from '@/components/ui/ProductCard';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const OrderStatusPage = () => {
   const navigate = useNavigate();
   const [ref, inView] = useInView();
-  const { data, error } = useFetchData('Product');
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    isLoading,
+    error,
+  } = useFetchInfiniteProducts();
+
+  useEffect(() => {
+    if (inView && hasNextPage) {
+      fetchNextPage();
+    }
+  }, [inView, fetchNextPage, hasNextPage]);
+
   console.log(inView, '스크롤 확인 ');
-  if (error) return <div>Error: 에러 발생</div>;
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: 에러발생</div>;
   const goTOUplaodPage = () => {
     navigate('/UploadProductPage');
   };
@@ -26,13 +42,17 @@ const OrderStatusPage = () => {
         </div>
       </div>
 
-      <div className="w-70% h-4/6  bg-gray-100">
-        {data &&
-          data.map((product: Product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+      <div className="w-70% h-4/6 bg-gray-100">
+        {data?.pages?.map((page, pageIndex) => (
+          <div key={pageIndex}>
+            {page.products.map(product => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        ))}
 
-        <div ref={ref}>하단</div>
+        <div ref={ref} style={{ height: 1, backgroundColor: 'transparent' }} />
+        {isFetchingNextPage && <div>Loading more...</div>}
       </div>
     </div>
   );

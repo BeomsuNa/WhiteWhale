@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import LoginForm from '@/components/LoginForm';
-import Login from '@/components/Login';
+import LoginForm from '@/sections/Login/LoginForm';
+import Login from '@/sections/Login/Login';
 import { useAuth } from '@/components/context/AuthContext';
 
 const LoginPage: React.FC = () => {
