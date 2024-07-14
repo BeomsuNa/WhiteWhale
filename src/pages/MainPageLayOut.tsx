@@ -1,19 +1,83 @@
 import MainProductCard from '@/components/ui/MainProductCard';
-import { useFetchData, useFetchProductCardData } from '@/hooks/UseFetchData';
+import { ProductCard } from '@/lib/utils';
+import { useFetchProductCardData } from '@/hooks/UseFetchData';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useProductCategory } from '@/components/context/ProductCategoryContext';
 
-const MainPageLayOut:React.FC = () => {
-  const [data: products, isLoading, error] = useFetchProductCardData();
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from '@/components/ui/carousel';
+import { Label } from '@radix-ui/react-label';
 
-  if (isLoading) return <div>메인페이지레이아웃에서 Loading</div>
-  if(error) return <div> Error: 메인페이지레이아웃에서 에러 발생</div>
+interface CategorizedProducts {
+  [category: string]: ProductCard[];
+}
+
+const MainPageLayOut: React.FC = () => {
+  const { data: products, isLoading, error } = useFetchProductCardData();
+  const { setCategory } = useProductCategory();
+  const navigate = useNavigate();
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>에러 발생</div>;
+  }
+
+  const categorizedProducts = products?.reduce<CategorizedProducts>(
+    (acc, product) => {
+      const category = product.productCategory;
+      if (!acc[category]) {
+        acc[category] = [];
+      }
+      acc[category].push(product);
+      return acc;
+    },
+    {},
+  );
+
+  const handleCategoryClick = (category: string) => {
+    setCategory(category);
+    navigate('/Products');
+  };
+
 
 
   return (
-    <div className="flex" id="mainPageLayoutSection">
-  {products?.map(product => (
-    <MainProductCard key={product.id} product={product} />
-  ))}
+    <div className="main-page-layout">
+      <Label className="font-bold text-white text-2xl">WhiteWhale</Label>
+      {categorizedProducts &&
+        Object.entries(categorizedProducts).map(([category, products]) => (
+          <div key={category} className="category-section">
+            <hr className="border-t border-gray-300 m-4" />
+            <h2 className="category-title">{category}</h2>
+            <button
+              className="absolute right-64 text-sm cursor-pointer hover:underline hover:text-white"
+              onClick={() => handleCategoryClick(category)}
+            >
+              전체보기
+            </button>
+            <hr className="border-t border-gray-300 m-5" />
+            <Carousel>
+              <CarouselContent>
+                {products.map(product => (
+                  <CarouselItem key={product.id} className="basis-1/4">
+                    <MainProductCard product={product} />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          </div>
+        ))}
     </div>
   );
 };

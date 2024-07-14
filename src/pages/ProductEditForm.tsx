@@ -10,6 +10,13 @@ import {
 import { db } from '@/config/firebase';
 import { Button } from '@/components/ui/button';
 import { useNavigate, useParams } from 'react-router-dom';
+import { Select } from '@/components/ui/select';
+import {
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@radix-ui/react-select';
 
 interface ProductEditFormProps {
   productId: string;
@@ -21,6 +28,7 @@ const ProductEditForm: React.FC<ProductEditFormProps> = () => {
   const [productName, setProductName] = useState('');
   const [productPrice, setProductPrice] = useState('');
   const [productQuantity, setProductQuantity] = useState('');
+  const [productCategory, setProductCategory] = useState('');
   const [productDescription, setProductDescription] = useState('');
   const [image, setImage] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState('');
@@ -141,6 +149,25 @@ const ProductEditForm: React.FC<ProductEditFormProps> = () => {
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
           />
         </div>
+        <div>
+          <label
+            htmlFor="productCategory"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            카테고리
+          </label>
+          <select
+            id="productCategory"
+            value={productCategory}
+            onChange={e => setProductCategory(e.target.value)}
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+          >
+            <option value="">카테고리 선택</option>
+            <option value="keyboard">커스텀키보드</option>
+            <option value="key">키보드 조각</option>
+            <option value="accessory">악세서리</option>
+          </select>
+        </div>
         <div className="sm:col-span-2">
           <label
             htmlFor="description"
@@ -156,6 +183,7 @@ const ProductEditForm: React.FC<ProductEditFormProps> = () => {
             placeholder="Your description here"
           />
         </div>
+
         <div className="sm:col-span-2">
           <label
             htmlFor="image"

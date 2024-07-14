@@ -28,3 +28,17 @@ export interface FetchProductsResult {
   products: Product[];
   nextPage: string | null;
 }
+
+export interface ProductCard {
+  id: string;
+  productCategory: string;
+  productName: string;
+  productPrice: number;
+  imageUrl: string;
+  productQuantity?: number;
+  updatedAt?: Timestamp;
+}
+
+export interface CartProduct extends ProductCard {
+  quantity: number;
+}

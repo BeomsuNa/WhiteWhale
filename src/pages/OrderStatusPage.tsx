@@ -2,7 +2,7 @@ import { useFetchData, useFetchInfiniteProducts } from '@/hooks/UseFetchData';
 import { Button } from '@/components/ui/button';
 import { useInView } from 'react-intersection-observer';
 import { Product } from '@/lib/utils';
-import ProductCard from '@/components/ui/ProductCard';
+import ProductCard from '@/components/ui/ProductCardLayOut';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
@@ -32,7 +32,7 @@ const OrderStatusPage = () => {
   };
 
   return (
-    <div className="w-11/12 h-full ">
+    <div className="w-11/12 h-full">
       <div id="orderTitle">
         <div className="font-bold mt-10 text-white flex flex-row justify-between">
           <p className="ml-5">주문현황</p>

@@ -6,7 +6,7 @@ interface ProductProps {
   product: Product;
 }
 
-const ProductCard: React.FC<ProductProps> = ({ product }) => {
+const ProductCardLayOut: React.FC<ProductProps> = ({ product }) => {
   const navigate = useNavigate();
 
   const handleEditClick = () => {
@@ -28,4 +28,4 @@ const ProductCard: React.FC<ProductProps> = ({ product }) => {
   );
 };
 
-export default ProductCard;
+export default ProductCardLayOut;

@@ -1,7 +1,7 @@
 import { useQuery, useInfiniteQuery } from 'react-query';
 import { FetchProducts } from './FetchProducts';
-import { FetchProductsResult, Product } from '@/lib/utils';
-import { FetchProductCardData } from './FetchProductCardData';
+import { FetchProductsResult, Product, ProductCard } from '@/lib/utils';
+import { fetchProductCardData } from './FetchProductCardData';
 
 export const useFetchData = (collectionName: string) => {
   return useQuery('products', FetchProducts);
@@ -13,6 +13,8 @@ export const useFetchInfiniteProducts = () => {
   });
 };
 
-export const useFetchProductCardData = () => {
-   return useQuery('productCardData', FetchProductCardData); // 함수 이름이 일치하는지 확인
+export const useFetchProductCardData = (sortOption: string) => {
+  return useQuery<ProductCard[]>(['productCardData', sortOption], () =>
+    fetchProductCardData(sortOption),
+  );
 };

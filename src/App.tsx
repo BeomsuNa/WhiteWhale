@@ -4,21 +4,32 @@ import Main from './pages/BackGroundPage';
 import { AuthProvider } from './components/context/AuthContext';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Header from './components/Header';
+import { ProductCategoryProvider } from './components/context/ProductCategoryContext';
+import PageHeader from './components/ui/PageHeader';
+import { CartProvider } from './components/context/CartContext';
+import Drawer from './components/ui/SideDrawer';
+import SideDrawer from './components/ui/SideDrawer';
 
 function App() {
   const queryClient = new QueryClient();
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <div
-          className="w-full h-screen flex flex-col justify-start items-center bg-backgroundColor"
-          id="mainSection"
-        >
-          <Header />
-          <Main />
-          <Outlet />
-        </div>
-      </AuthProvider>
+      <CartProvider>
+        <AuthProvider>
+          <ProductCategoryProvider>
+            <div
+              className="w-full h-screen flex flex-col justify-start space-x-3 bg-backgroundColor"
+              id="mainSection"
+            >
+              <Header />
+              <SideDrawer />
+              <PageHeader />
+              <Main />
+              <Outlet />
+            </div>
+          </ProductCategoryProvider>
+        </AuthProvider>
+      </CartProvider>
     </QueryClientProvider>
   );
 }

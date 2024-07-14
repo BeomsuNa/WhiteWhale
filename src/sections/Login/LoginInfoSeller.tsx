@@ -15,13 +15,15 @@ const LoginInfoSeller: React.FC<Props> = ({ nickname, handleLogOutButton }) => {
   const navigate = useNavigate();
 
   return (
-    <div id="LoginInfoSection" className="flex space-x-5">
-      <p>{nickname}님 (판매자)</p>
+    <div id="LoginInfoSection" className="flex space-x-5 space-y-2">
+      <div className="my-2">
+        <p>{nickname}님 (판매자)</p>
+      </div>
       <HoverCard>
-        <HoverCardTrigger asChild>
+        <HoverCardTrigger>
           <button
             type="button"
-            className="lg:hover:underline"
+            className="lg:hover:underline "
             onClick={() => navigate('/MyPage')}
           >
             내정보

@@ -1,9 +1,10 @@
 import { Label } from '@radix-ui/react-label';
 import React from 'react';
-import { Product } from '@/lib/utils';
+import { ProductCard } from '@/lib/utils';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 interface MainProductCardProps {
-  product: Product;
+  product: ProductCard;
 }
 
 const MainProductCard: React.FC<MainProductCardProps> = ({ product }) => {
@@ -11,14 +12,21 @@ const MainProductCard: React.FC<MainProductCardProps> = ({ product }) => {
     console.log('정보를 받아오지 못했음');
     return <div>Loading....</div>;
   }
+
   return (
     <div>
-      <Label>
-        <div
-          className="w-64 h-64 rounded-xl border border-white"
-          id="cardBorderSection"
-        >
-          <div className="w-full h-1/2 ">{product.imageUrl}</div>
+      <div
+        className="w-64 h-64 rounded-xl border border-white m-3"
+        id="cardBorderSection"
+      >
+        <Link to={`/buy/${product.id}`} state={{ product }}>
+          <div className="w-full h-2/3">
+            <img
+              src={product.imageUrl}
+              alt={product.productName}
+              className="object-contain"
+            />
+          </div>
           <div
             className="flex flex-row justify-between items-center  h-1/3 "
             id="MainCardGuideLine"
@@ -31,8 +39,8 @@ const MainProductCard: React.FC<MainProductCardProps> = ({ product }) => {
               {product.productPrice}
             </div>
           </div>
-        </div>
-      </Label>
+        </Link>
+      </div>
     </div>
   );
 };
