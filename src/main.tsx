@@ -15,6 +15,7 @@ import MainPageLayOut from './pages/MainPageLayOut';
 import ProductDetailPage from './pages/ProductDetailPage';
 import AllProductPage from './pages/AllProdcutPage';
 import BasketPage from './pages/BasketPage';
+import BuyProductPage from './pages/BuyProductPage';
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
       { path: '/deliverystatuspage', element: <DeliveryStatusPage /> },
       { path: '/signup', element: <SignUp /> },
       { path: '/basket', element: <BasketPage /> },
-      { path: '/buyprodcut', element: <BuyProduct /> },
+      { path: '/buyprodcut', element: <BuyProductPage /> },
       { path: '/Products', element: <AllProductPage /> },
       { path: '/buy/:productId', element: <ProductDetailPage /> },
     ],

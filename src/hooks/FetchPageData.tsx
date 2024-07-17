@@ -22,11 +22,10 @@ const fetchProducts = async ({
   );
 
   if (pageParam) {
-    const lastVisible = await getDoc(doc(db, 'Product', pageParam));
+    const lasVisible = await getDoc(doc(db, 'Product', pageParam));
     queryData = query(
       collection(db, 'Product'),
       orderBy('createdAt', 'desc'),
-      startAfter(lastVisible),
       limit(10),
     );
   }

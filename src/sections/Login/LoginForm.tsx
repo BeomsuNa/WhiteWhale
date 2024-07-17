@@ -27,23 +27,40 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
     }
   };
   return (
-    <form onSubmit={handleLogin}>
-      <Label htmlFor="email">Email</Label>
-      <Input
-        type="email"
-        id="email"
-        value={email}
-        onChange={e => setEmail(e.target.value)}
-      />
-      <Label htmlFor="passWord">PASSWORD</Label>
-      <Input
-        type="password"
-        id="passWord"
-        value={passWord}
-        onChange={e => setPassWord(e.target.value)}
-      />
-      <Button type="submit">로그인</Button>
-    </form>
+    <div className="flex justify-center m-12 h-ull">
+      <form
+        onSubmit={handleLogin}
+        className="w-1/3 h-128 pl-8 pr-8 pt-8 shadow-md bg-gray-300"
+      >
+        <h2 className="mb-10 text-lg font-bold"> Login</h2>
+        <div className="mb-4">
+          <Label htmlFor="email">Email</Label>
+          <Input
+            type="email"
+            id="email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            className="border border-black bg-slate-200"
+          />
+        </div>
+        <Label htmlFor="passWord">PASSWORD</Label>
+        <Input
+          type="password"
+          id="passWord"
+          value={passWord}
+          onChange={e => setPassWord(e.target.value)}
+          className="border border-black bg-slate-200"
+        />
+        <Button type="submit" className="m-6">
+          로그인
+        </Button>
+        <div>
+          <p>
+            아직 아이디가 없으신가요? <a href="/SignUp">회원가입 클릭</a>
+          </p>
+        </div>
+      </form>
+    </div>
   );
 };
 

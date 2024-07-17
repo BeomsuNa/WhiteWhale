@@ -9,6 +9,7 @@ import PageHeader from './components/ui/PageHeader';
 import { CartProvider } from './components/context/CartContext';
 import Drawer from './components/ui/SideDrawer';
 import SideDrawer from './components/ui/SideDrawer';
+import Footer from './components/ui/Footer';
 
 function App() {
   const queryClient = new QueryClient();
@@ -18,14 +19,17 @@ function App() {
         <AuthProvider>
           <ProductCategoryProvider>
             <div
-              className="w-full h-screen flex flex-col justify-start space-x-3 bg-backgroundColor"
+              className="w-full h-screen flex flex-col justify-start space-x-3 bg-backgroundColor "
               id="mainSection"
             >
               <Header />
               <SideDrawer />
               <PageHeader />
               <Main />
-              <Outlet />
+              <div className="flex-grow">
+                <Outlet />
+              </div>
+              <Footer />
             </div>
           </ProductCategoryProvider>
         </AuthProvider>

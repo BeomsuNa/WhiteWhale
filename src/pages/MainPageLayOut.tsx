@@ -48,16 +48,12 @@ const MainPageLayOut: React.FC = () => {
     navigate('/Products');
   };
 
-
-
   return (
-    <div className="main-page-layout">
-      <Label className="font-bold text-white text-2xl">WhiteWhale</Label>
+    <div className="main-page-layout p-20 ">
       {categorizedProducts &&
         Object.entries(categorizedProducts).map(([category, products]) => (
           <div key={category} className="category-section">
-            <hr className="border-t border-gray-300 m-4" />
-            <h2 className="category-title">{category}</h2>
+            <Label className="mt-4 font-bold">{category}</Label>
             <button
               className="absolute right-64 text-sm cursor-pointer hover:underline hover:text-white"
               onClick={() => handleCategoryClick(category)}

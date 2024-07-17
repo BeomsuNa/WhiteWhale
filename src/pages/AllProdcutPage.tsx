@@ -9,7 +9,7 @@ import { orderBy, query, Timestamp } from 'firebase/firestore';
 import { useFetchSortedProducts } from '@/hooks/FetchSortedProducts';
 
 const AllProductPage: React.FC = () => {
-  const { category } = useProductCategory();
+  const { category, setCategory } = useProductCategory();
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useFetchInfiniteProducts();
   const { ref, inView } = useInView();
@@ -35,7 +35,6 @@ const AllProductPage: React.FC = () => {
         : allProducts;
 
       const sortedArray = [...filteredProducts];
-      console.log('변경전 sortArray의 상태', sortedArray);
       if (sortOption === 'updatedAt') {
         sortedArray.sort((a, b) => b.createdAt.seconds - a.createdAt.seconds);
       } else if (sortOption === 'productPrice') {
@@ -66,16 +65,29 @@ const AllProductPage: React.FC = () => {
     console.log('지금 state상태는?;', sortOption);
   };
 
+  const hanldeAllProduct = () => {
+    setCategory(null);
+  };
   return (
-    <div>
+    <div className="p-20">
       <div>
         <h3 className="text-3xl">현재 {category}의 물품입니다</h3>
+
         <div className="flex">
-          <h6>전체</h6>
+          <button onClick={hanldeAllProduct} className="lg:hover:underline">
+            <h6>전체</h6>
+          </button>
           <h6> &nbsp;/&nbsp; </h6>
-          <button onClick={handleSortByPrice}>가격순</button>
+          <button onClick={handleSortByPrice} className="lg:hover:underline">
+            가격순
+          </button>
           <h6> &nbsp;/&nbsp; </h6>
-          <button onClick={() => setSortOption('updatedAt')}>날짜순</button>
+          <button
+            onClick={() => setSortOption('updatedAt')}
+            className="lg:hover:underline"
+          >
+            날짜순
+          </button>
         </div>
       </div>
       <div className="flex flex-wrap justify-start">

@@ -4,20 +4,22 @@ import { fetchProductCardData } from '@/hooks/FetchProductCardData';
 import { useFetchInfiniteProducts } from '@/hooks/UseFetchData';
 import { getAuth } from 'firebase/auth';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const BasketPage: React.FC = () => {
   const { cart, updateCartQuantity, removeFromCart } = useCart();
-
+  const navigate = useNavigate();
   const handleQuantityChange = (productId: string, quantity: number) => {
     if (quantity < 1) return;
     updateCartQuantity(productId, quantity);
   };
 
-  const handleBuyProduct = () => {
-    
-  }
+  const goToBuyProductPage = () => {
+    navigate('/buyprodcut');
+  };
+
   return (
-    <div className="w-full bg-gray-100 p-5">
+    <div className="w-ful pl-20 pr-20">
       <h2 className="text-2xl mb-4">장바구니</h2>
       {cart.length === 0 ? (
         <p>장바구니가 비어 있습니다.</p>
@@ -65,7 +67,10 @@ const BasketPage: React.FC = () => {
           ))}
         </ul>
       )}
-      <Button>구매하기</Button>
+      <Button onClick={goToBuyProductPage}>구매하기</Button>
+      <div className="">
+        {cart.map(product => product.productPrice * product.quantity)}원
+      </div>
     </div>
   );
 };

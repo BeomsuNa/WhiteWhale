@@ -66,7 +66,7 @@ const ProductDetailPage: React.FC<MainProductCardProps> = () => {
     navigate('/basket');
   };
   return (
-    <div className="h-full w-full bg-productpage">
+    <div className="h-full w-full">
       <div className="h-3/5 flex items-center">
         <div className="w-1/2 mx-128">
           <div className="w-96 h-96 overflow-hidden mx-72">

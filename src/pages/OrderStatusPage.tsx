@@ -34,15 +34,15 @@ const OrderStatusPage = () => {
   return (
     <div className="w-11/12 h-full">
       <div id="orderTitle">
-        <div className="font-bold mt-10 text-white flex flex-row justify-between">
-          <p className="ml-5">주문현황</p>
-          <Button className="mr-5 mb-3" onClick={goTOUplaodPage}>
+        <div className="font-bold p-20 text-white flex flex-row justify-between">
+          <p className="text-lg">주문현황</p>
+          <Button className="mr-5 " onClick={goTOUplaodPage}>
             물건 등록
           </Button>
         </div>
       </div>
 
-      <div className="w-70% h-4/6 bg-gray-100">
+      <div className="w-70% p-20 ">
         {data?.pages?.map((page, pageIndex) => (
           <div key={pageIndex}>
             {page.products.map(product => (

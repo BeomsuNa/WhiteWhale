@@ -14,11 +14,14 @@ const ProductCardLayOut: React.FC<ProductProps> = ({ product }) => {
   };
 
   return (
-    <div className="w-full h-1/5 flex pt-2" onClick={handleEditClick}>
+    <div
+      className="w-full h-1/5 flex p-5 border border-black mb-5 items-center"
+      onClick={handleEditClick}
+    >
       <img
         src={product.imageUrl}
         alt={product.productName}
-        className="w-1/6 h-auto px-5"
+        className="w-1/6 h-auto px-5 "
       />
       <div className="w-1/6">제목 : {product.productName}</div>
       <div className="w-2/6">설명 :{product.productDescription}</div>

@@ -20,7 +20,7 @@ const LoginPage: React.FC = () => {
 
   return (
     <div>
-      <h1>로그인 페이지</h1>
+
       <LoginForm onLogin={handleLogin} />
       {credentials && (
         <Login
@@ -29,11 +29,6 @@ const LoginPage: React.FC = () => {
           onLoginSuccess={handleLoginSuccess}
         />
       )}
-      <div>
-        <p>
-          아직 아이디가 없으신가요? <a href="/SignUp">회원가입 클릭</a>
-        </p>
-      </div>
     </div>
   );
 };

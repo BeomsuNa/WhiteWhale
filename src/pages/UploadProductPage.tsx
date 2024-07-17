@@ -7,6 +7,7 @@ import {
   getFirestore,
 } from 'firebase/firestore';
 import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 const ProductForm = () => {
   const [productName, setProductName] = useState('');
@@ -19,9 +20,10 @@ const ProductForm = () => {
 
   const storage = getStorage();
   const firestore = getFirestore();
+  const navigate = useNavigate();
 
-  const handleImageChange = e => {
-    if (e.target.files[0]) {
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
       setImage(e.target.files[0]);
     }
   };
@@ -56,8 +58,11 @@ const ProductForm = () => {
     setProductPrice('');
     setProductQuantity('');
     setProductDescription('');
+    setProductCategory('');
     setImage(null);
     setImageUrl('');
+    alert('제품 등록이 완료되었습니다!');
+    navigate('/orderstatuspage');
   };
 
   return (
