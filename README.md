@@ -74,18 +74,16 @@
   </ol>
 </details>
 
-
 ## 1. WHITEWHALE이란?
 
 ## 2. 메인 기능
-
 
 ## 3. 개발 환경
 
 - 개발 인원 : 1인
 - 개발 기간 : 2024.06 ~
 - 사용기술
-<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"><img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white"><img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=Vite&logoColor=white"><img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?style=for-the-badge&logo=Tailwind CSS&logoColor=white"><img src="https://img.shields.io/badge/ReactQuery-FF4154?style=for-the-badge&logo=react-query&logoColor=white"><img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white"><img src="https://img.shields.io/badge/FireBase-DD2C00?style=for-the-badge&logo=FireBase&logoColor=white">
+  <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"><img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white"><img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=Vite&logoColor=white"><img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?style=for-the-badge&logo=Tailwind CSS&logoColor=white"><img src="https://img.shields.io/badge/ReactQuery-FF4154?style=for-the-badge&logo=react-query&logoColor=white"><img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white"><img src="https://img.shields.io/badge/FireBase-DD2C00?style=for-the-badge&logo=FireBase&logoColor=white">
 
 1. 메인 : React, TypeScript
 2. 빌드 툴 : Vite
@@ -98,6 +96,100 @@
 
 ## 4. 프로젝트 구성
 
+root
+├─dist
+│ └─assets
+├─node_modules
+├─public
+┣ logo
+┃ ┣ Basket.png
+┃ ┣ ClientIcon.png
+┃ ┣ Elegant.png
+┃ ┣ GitHub.png
+┃ ┣ MenuIcon.png
+┃ ┗ Notion.png
+┣ src
+┃ ┣ assets
+┃ ┃ ┗ react.svg
+┃ ┣ components
+┃ ┃ ┣ context
+┃ ┃ ┃┣ AuthContext.tsx
+┃ ┃ ┃┣ CartContext.tsx
+┃ ┃ ┃┗ ProductCategoryContext.tsx
+┃ ┃ ┣ ui
+┃ ┃ ┃┣ alert-dialog.tsx
+┃ ┃ ┃┣ alert.tsx
+┃ ┃ ┃┣ avatar.tsx
+┃ ┃ ┃┣ button.tsx
+┃ ┃ ┃┣ card.tsx
+┃ ┃ ┃┣ carousel.tsx
+┃ ┃ ┃┣ checkbox.tsx
+┃ ┃ ┃┣ Footer.tsx
+┃ ┃ ┃┣ hover-card.tsx
+┃ ┃ ┃┣ input.tsx
+┃ ┃ ┃┣ label.tsx
+┃ ┃ ┃┣ MainProductCard.tsx
+┃ ┃ ┃┣ PageHeader.tsx
+┃ ┃ ┃┣ ProductCardLayOut.tsx
+┃ ┃ ┃┣ select.tsx
+┃ ┃ ┃┣ SideDrawer.tsx┃
+┃ ┃ ┃┗ table.tsx
+┃ ┃ ┗ Header.tsx
+┃ ┣ config
+┃ ┃ ┗ firebase.ts
+┃ ┣ hooks
+┃ ┃ ┣ FetchPageData.tsx
+┃ ┃ ┣ FetchProductCardData.tsx
+┃ ┃ ┣ FetchProductList.tsx
+┃ ┃ ┣ FetchProducts.tsx
+┃ ┃ ┣ FetchSortedProducts.tsx
+┃ ┃ ┣ FetchUser.tsx
+┃ ┃ ┣ Payment.tsx
+┃ ┃ ┗ UseFetchData.tsx
+┃ ┗ lib
+┃ ┃┗ utils.ts
+┃ ┗ pages
+┃ ┃ ┣ AllProdcutPage.tsx
+┃ ┃ ┣ BackGroundPage.tsx
+┃ ┃ ┣ BasketPage.tsx
+┃ ┃ ┣ BuyProductPage.tsx
+┃ ┃ ┣ DeliveryStatusPage.tsx
+┃ ┃ ┣ LoginPage.tsx
+┃ ┃ ┣ MainPageLayOut.tsx
+┃ ┃ ┣ MyPage.tsx
+┃ ┃ ┣ OrderStatusPage.tsx
+┃ ┃ ┣ ProductDetailPage.tsx
+┃ ┃ ┣ ProductEditForm.tsx
+┃ ┃ ┣ SignUpPage.tsx
+┃ ┃ ┗ UploadProductPage.tsx
+┃ ┗ sections
+┃ ┃ ┗ Login
+┃ ┃ ┃ ┣ Login.tsx
+┃ ┃ ┃ ┣ LoginForm.tsx
+┃ ┃ ┃ ┣ LoginInfoGuest.tsx
+┃ ┃ ┃ ┣ LoginInfoSeller.tsx
+┃ ┃ ┃ ┗ LoginInfoUser.tsx
+┃ ┣ **tests**
+┃ ┃ ┗ Login.test.ts
+┃ ┣ App.css
+┃ ┣ App.tsx
+┃ ┣ index.css
+┃ ┣ main.tsx
+┃ ┗ vite-env.d.ts
+┣ .env
+┣ .eslintrc.cjs
+┣ .gitignore
+┣ .prettierrc.cjs
+┣ components.json
+┣ index.html
+┣ package-lock.json
+┣ package.json
+┣ tailwind,config.js
+┣ tsconfig.app.json
+┣ tsconfig.json
+┣ tsconfig.node.json
+┗ vite.config.ts
+
 1. 메인 페이지
 2. 로그인 페이지,
 3. 회원가입 페이지
@@ -109,7 +201,9 @@
 9. 물건구매페이지
 
 ## 5. 구현 기능
+
 ### 1. 핵심 기능
+
 ### 2. 주요 기능
 
 ### 사용이유
