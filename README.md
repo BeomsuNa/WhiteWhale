@@ -28,10 +28,10 @@
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+ 대표화면 위치 <WHiteWhale></WHiteWhale>
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">WHITEWHALE</h3>
 
   <p align="center">
     An awesome README template to jumpstart your projects!
@@ -52,38 +52,40 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#about-the-project">프로젝트 소개 </a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#built-with">설계 이유</a></li>
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#getting-started">실행 조건</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#prerequisites">사용방법</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#usage">개발기술</a></li>
+    <li><a href="#roadmap">프로젝트 구조</a></li>
+    <li><a href="#contributing">핵심기능</a></li>
+    <li><a href="#license">페이지별 기능</a></li>
+    <li><a href="#contact">트러블 슈팅</a></li>
+    <li><a href="#acknowledgments">개선목표</a></li>
+    <li><a href="#acknowledgments">프로젝트 후기</a></li>
   </ol>
 </details>
 
-## 커스텀 키보드를 판매하는 사이트 WHITEWHALE Proejct
 
-## 1. 해당 프로젝트는 vite를 이용해 빠른 로딩으로 커스텀 키보드 판매 사이트를 제작한 프로젝트입니다.
+## 1. WHITEWHALE이란?
 
 ## 2. 메인 기능
+
 
 ## 3. 개발 환경
 
 - 개발 인원 : 1인
 - 개발 기간 : 2024.06 ~
 - 사용기술
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"><img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white"><img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=Vite&logoColor=white"><img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?style=for-the-badge&logo=Tailwind CSS&logoColor=white"><img src="https://img.shields.io/badge/ReactQuery-FF4154?style=for-the-badge&logo=react-query&logoColor=white"><img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white"><img src="https://img.shields.io/badge/FireBase-DD2C00?style=for-the-badge&logo=FireBase&logoColor=white">
 
 1. 메인 : React, TypeScript
 2. 빌드 툴 : Vite
@@ -106,7 +108,9 @@
 8. 물건등록 페이지
 9. 물건구매페이지
 
-## 5. 깃 브랜치 전략 : Github Flow 전략 사용
+## 5. 구현 기능
+### 1. 핵심 기능
+### 2. 주요 기능
 
 ### 사용이유
 
