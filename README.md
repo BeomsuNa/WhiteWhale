@@ -95,6 +95,7 @@
 8. 페이지 라우팅 : React Router
 
 ## 4. 프로젝트 구성
+
 ```
 root
 ├─dist
@@ -190,6 +191,7 @@ root
 ┣ tsconfig.node.json
 ┗ vite.config.ts
 ```
+
 1. 메인 페이지
 2. 로그인 페이지,
 3. 회원가입 페이지
