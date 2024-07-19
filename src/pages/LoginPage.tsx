@@ -20,7 +20,6 @@ const LoginPage: React.FC = () => {
 
   return (
     <div>
-
       <LoginForm onLogin={handleLogin} />
       {credentials && (
         <Login

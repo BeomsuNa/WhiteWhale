@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 const BasketPage: React.FC = () => {
   const { cart, updateCartQuantity, removeFromCart } = useCart();
+
   const navigate = useNavigate();
   const handleQuantityChange = (productId: string, quantity: number) => {
     if (quantity < 1) return;
@@ -17,7 +18,7 @@ const BasketPage: React.FC = () => {
   const goToBuyProductPage = () => {
     navigate('/buyprodcut');
   };
-
+  console.log('현재 장바구니는?', cart);
   return (
     <div className="w-ful pl-20 pr-20">
       <h2 className="text-2xl mb-4">장바구니</h2>

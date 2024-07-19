@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import * as PortOne from '@portone/browser-sdk/v2';
 import { useCart } from '@/components/context/CartContext';
 import { ProductCard } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { addDoc, collection } from 'firebase/firestore';
+import { db } from '@/config/firebase';
 
 interface PaymentResponse {
   success: boolean;
@@ -29,28 +31,26 @@ const BuyProductPage = () => {
             currency: 'CURRENCY_KRW',
             payMethod: 'CARD',
           })) as PaymentResponse | undefined;
+
           if (response?.code != null) {
             throw new Error('결제 중 오류 발생');
           }
 
-          // 서버로 결제 완료 정보를 전송
-          const notified = await fetch(
-            `${import.meta.env.VITE_SERVER_BASE_URL}/payment/complete`,
-            {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                paymentId: response?.paymentId,
-                product, // 개별 품목 정보
-              }),
-            },
-          );
+          // Firestore에 결제 정보 저장
+          await addDoc(collection(db, 'payments'), {
+            paymentId: response?.paymentId,
+            productId: product.id,
+            productName: product.productName,
+            totalAmount: product.productPrice * product.quantity,
+            currency: 'CURRENCY_KRW',
+            payMethod: 'CARD',
+            createdAt: new Date(),
+          });
 
-          return notified.json();
+          return response;
         }),
       );
 
-      console.log('결제 완료 후 서버 응답:', paymentResponses);
       alert('결제가 완료되었습니다.');
     } catch (error) {
       console.error('결제 중 오류 발생', error);
@@ -84,7 +84,7 @@ const BuyProductPage = () => {
           ))}
         </ul>
       </div>
-      <Button onClick={() => handlePayment()}>결제하기</Button>
+      <Button onClick={handlePayment}>결제하기</Button>
     </div>
   );
 };
