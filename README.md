@@ -68,7 +68,7 @@
 ## 1. WHITEWHALE이란?
 커스텀 키보드에 대한 남다른 관심을 가진 고객들을 위해 제작된 커스텀 키보드 제작 사이트입니다. Vite를 통해 빠른 화면전환과 렌더링 시간을 단축시켰고 reactQuery를 통해 데이터를 전역으로 관리하는 데 집중했습니다.
 
-프로젝트 페이지 :https://alert-stove-2f8.notion.site/fdd3855bdadc4d188b858729d03ee285?pvs=4
+프로젝트 페이지:https://alert-stove-2f8.notion.site/fdd3855bdadc4d188b858729d03ee285?pvs=4
 
 
 ## 2.실행 방법
@@ -99,39 +99,14 @@ root
 ├─node_modules
 ├─public
 ┣ logo
-┃ ┣ Basket.png
-┃ ┣ ClientIcon.png
-┃ ┣ Elegant.png
-┃ ┣ GitHub.png
-┃ ┣ MenuIcon.png
-┃ ┗ Notion.png
 ┣ src
 ┃ ┣ assets
-┃ ┃ ┗ react.svg
 ┃ ┣ components
 ┃ ┃ ┣ context
 ┃ ┃ ┃┣ AuthContext.tsx
 ┃ ┃ ┃┣ CartContext.tsx
 ┃ ┃ ┃┗ ProductCategoryContext.tsx
 ┃ ┃ ┣ ui
-┃ ┃ ┃┣ alert-dialog.tsx
-┃ ┃ ┃┣ alert.tsx
-┃ ┃ ┃┣ avatar.tsx
-┃ ┃ ┃┣ button.tsx
-┃ ┃ ┃┣ card.tsx
-┃ ┃ ┃┣ carousel.tsx
-┃ ┃ ┃┣ checkbox.tsx
-┃ ┃ ┃┣ Footer.tsx
-┃ ┃ ┃┣ hover-card.tsx
-┃ ┃ ┃┣ input.tsx
-┃ ┃ ┃┣ label.tsx
-┃ ┃ ┃┣ MainProductCard.tsx
-┃ ┃ ┃┣ PageHeader.tsx
-┃ ┃ ┃┣ ProductCardLayOut.tsx
-┃ ┃ ┃┣ select.tsx
-┃ ┃ ┃┣ SideDrawer.tsx┃
-┃ ┃ ┃┗ table.tsx
-┃ ┃ ┗ Header.tsx
 ┃ ┣ config
 ┃ ┃ ┗ firebase.ts
 ┃ ┣ hooks
@@ -188,33 +163,26 @@ root
 ┗ vite.config.ts
 ```
 
-1. 메인 페이지
-2. 로그인 페이지,
-3. 회원가입 페이지
-4. 마이 페이지
-5. 상품 페이지
+
+
+
+## 5. 구현 기능
+
+
+1. 메인 페이지 : 데이터를 crasul 형태로 출력함.
+
+  ![image](https://github.com/user-attachments/assets/9c87db65-44e1-4d02-b9ca-c0d448de632a)
+2. 로그인 페이지 : db내의 데이터를 확인하여 같은 ID가 있다면 '로그인 성공' 메시지가 출력하고 전체 로그인 상태를 '로그인'으로 처리함.
+  ![image](https://github.com/user-attachments/assets/0124b59c-5b7e-418a-9a87-532202516a2c)
+
+3. 회원가입 페이지 : 유효성 검사 기능, db 내의 데이터 없을 시 '회원가입 성공' 메시지와 데이터 저장
+4. 마이 페이지 : 페이지 내 데이터 변경
+5. 상품 페이지 : 
 6. 상품 상세 페이지
 7. 장바구니 페이지
 8. 물건등록 페이지
 9. 물건구매페이지
 
-## 5. 구현 기능
-
-### 1) 핵심 기능
-  1. ReactQuery를 이용하여 서버의 상태 관리
-     - 로그인 상태 관리, 구매상태, 장바구니 상태 정보 
-  2. 인피니티스크롤을 이용한 페이지 로딩
-     - reactQuery의 useInfiniteQuery를 사용.
-  3. IMPortAPI를 적용하여 호출할 수 있는 기능
-     - toss 결제 인터페이스를 적용하고 구매한 상품을 DB내에 저장
-
-
-### 2) 주요 기능
-  1. 회원가입, 로그인 기능
-  2. 불러온 데이터를 Carosul 인터페이스로 출력
-  3. 각 카테고리와 상태, 정렬등으로 분리 
-  4. 비회원 구매 기능
-     - localStorage와 sessionStroage를 이용해 회원, 비회원의 장바구니 상태 분리.
 
 ## 6. 트러블 슈팅 
 
@@ -241,10 +209,9 @@ root
 * [ ] 랜더링 최적화 
 
 
-
-
 ## 7. 깃 컨벤션, 코드 컨벤션
 코드 컨벤션 1.컴포넌트의 경우 대문자, 보통은 함수형 컴포넌트를 사용하고 정말 필요한 상황일 때는
 기능형으로 지정 2.경로처럼 각 기능의 역할을 한번에 보여줘야하는 명사의 경우 파스칼 형태를 사용 3. 컴포넌트에서 지역 상태가 있을 경우 항상 최상단에 적용
 
 위키 참조
+
