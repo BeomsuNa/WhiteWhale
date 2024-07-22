@@ -18,26 +18,19 @@
 -->
 
 
+
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
- 대표화면 위치 <WHiteWhale></WHiteWhale>
+    <img src="https://github.com/user-attachments/assets/eb8b9051-03c5-425c-aa96-d59f842f3619" alt='WhiteWhaleLogo'>
+ <WHiteWhale></WHiteWhale>
   </a>
 
   <h3 align="center">WHITEWHALE</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    커스텀 키보드가 필요한 사용자들을 위해 제작된 커스텀 키보드 판매 사이트 WhiteWhale입니다.
   </p>
 </div>
 
@@ -80,14 +73,13 @@ $ npm i
 $ npm run dev
 ```
 
-
-
 ## 3. 개발 환경
 
 - 개발 인원 : 1인
 - 개발 기간 : 2024.06 ~
 - 사용기술
-  <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"><img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white"><img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=Vite&logoColor=white"><img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?style=for-the-badge&logo=Tailwind CSS&logoColor=white"><img src="https://img.shields.io/badge/ReactQuery-FF4154?style=for-the-badge&logo=react-query&logoColor=white"><img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white"><img src="https://img.shields.io/badge/FireBase-DD2C00?style=for-the-badge&logo=FireBase&logoColor=white">
+  
+  <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"><img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white"><img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=Vite&logoColor=white"><img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?style=for-the-badge&logo=Tailwind CSS&logoColor=white"><img src="https://img.shields.io/badge/ReactQuery-FF4154?style=for-the-badge&logo=react-query&logoColor=white"><img src="https://img.shields.io/badge/FireBase-DD2C00?style=for-the-badge&logo=FireBase&logoColor=white">
 
 
 ## 4. 프로젝트 구성
@@ -99,17 +91,17 @@ root
 ├─node_modules
 ├─public
 ┣ logo
-┣ src
+┣ src  
 ┃ ┣ assets
-┃ ┣ components
-┃ ┃ ┣ context
+┃ ┣ components   
+┃ ┃ ┣ context  //ContextAPI만 담을 수 있는 공간을 제작했습니다.
 ┃ ┃ ┃┣ AuthContext.tsx
 ┃ ┃ ┃┣ CartContext.tsx
 ┃ ┃ ┃┗ ProductCategoryContext.tsx
 ┃ ┃ ┣ ui
-┃ ┣ config
+┃ ┣ config   // 파이어베이스의 db를 초기화하는 로직입니다.
 ┃ ┃ ┗ firebase.ts
-┃ ┣ hooks
+┃ ┣ hooks   // db내에서 유저 정보를 가져오는 훅을 담았습니다.
 ┃ ┃ ┣ FetchPageData.tsx
 ┃ ┃ ┣ FetchProductCardData.tsx
 ┃ ┃ ┣ FetchProductList.tsx
@@ -120,7 +112,7 @@ root
 ┃ ┃ ┗ UseFetchData.tsx
 ┃ ┗ lib
 ┃ ┃┗ utils.ts
-┃ ┗ pages
+┃ ┗ pages  // 페이지와 최소한의 state를 담았습니다.
 ┃ ┃ ┣ AllProdcutPage.tsx
 ┃ ┃ ┣ BackGroundPage.tsx
 ┃ ┃ ┣ BasketPage.tsx
@@ -135,7 +127,7 @@ root
 ┃ ┃ ┣ SignUpPage.tsx
 ┃ ┃ ┗ UploadProductPage.tsx
 ┃ ┗ sections
-┃ ┃ ┗ Login
+┃ ┃ ┗ Login // 로그인에 대한 레이아웃과 관련로직을 가져왔습니다.
 ┃ ┃ ┃ ┣ Login.tsx
 ┃ ┃ ┃ ┣ LoginForm.tsx
 ┃ ┃ ┃ ┣ LoginInfoGuest.tsx
@@ -164,10 +156,7 @@ root
 ```
 
 
-
-
 ## 5. 구현 기능
-
 
 1. 메인 페이지 : 데이터를 crasul 형태로 출력함.
   ![image](https://github.com/user-attachments/assets/9c87db65-44e1-4d02-b9ca-c0d448de632a)
@@ -209,8 +198,6 @@ root
 
 
 ## 7. 깃 컨벤션, 코드 컨벤션
-코드 컨벤션 1.컴포넌트의 경우 대문자, 보통은 함수형 컴포넌트를 사용하고 정말 필요한 상황일 때는
-기능형으로 지정 2.경로처럼 각 기능의 역할을 한번에 보여줘야하는 명사의 경우 파스칼 형태를 사용 3. 컴포넌트에서 지역 상태가 있을 경우 항상 최상단에 적용
 
 위키 참조
 
