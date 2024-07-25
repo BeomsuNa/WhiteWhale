@@ -61,7 +61,7 @@
 ## 1. WHITEWHALE이란?
 커스텀 키보드에 대한 남다른 관심을 가진 고객들을 위해 제작된 커스텀 키보드 제작 사이트입니다. Vite를 통해 빠른 화면전환과 렌더링 시간을 단축시켰고 reactQuery를 통해 데이터를 전역으로 관리하는 데 집중했습니다.
 
-데모 페이지:https://alert-stove-2f8.notion.site/fdd3855bdadc4d188b858729d03ee285?pvs=4
+프로젝트 Notion : https://alert-stove-2f8.notion.site/fdd3855bdadc4d188b858729d03ee285?pvs=4
 
 
 ## 2.실행 방법
