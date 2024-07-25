@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
 
@@ -32,6 +32,7 @@ const SideDrawer = () => {
         onClick={toggleDrawer}
         className={`fixed top-1/3 right-0 p-2 bg-blue-500 text-white rounded transform transition-transform duration-300 z-50 ${isOpen ? `translate-x-[-16rem]` : ''}`}
         style={{ writingMode: 'vertical-rl', textOrientation: 'upright' }}
+        type="button"
       >
         상품확인하기
       </button>
@@ -42,6 +43,7 @@ const SideDrawer = () => {
           <button
             onClick={toggleDrawer}
             className="p-2 bg-red-500 text-white rounded"
+            type="button"
           >
             Close Drawer
           </button>

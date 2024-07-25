@@ -10,22 +10,28 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  CarouselApi,
 } from '@/components/ui/carousel';
 import { useCart } from '@/components/context/CartContext';
 
 interface MainProductCardProps {
-  product: ProductCard;
+  sortOption: string;
+  onClose: () => void;
 }
 
-const ProductDetailPage: React.FC<MainProductCardProps> = () => {
+const ProductDetailPage: React.FC<MainProductCardProps> = ({
+  sortOption,
+  onClose,
+}) => {
   const location = useLocation();
   const navigate = useNavigate();
   const { product } = location.state || {};
   const { productId } = useParams<{ productId: string }>();
-  const { data: products } = useFetchProductCardData();
+  const { data: products } = useFetchProductCardData(sortOption);
   const { addToCart } = useCart();
   const [orderProductCount, setOrderProductCount] = useState<number>(0);
   const [finishiCart, setFinishiCart] = useState(false);
+  const [emblaApi, setEmblaApi] = useState<CarouselApi | null>(null);
 
   const incrementCount = () => {
     setOrderProductCount(prevCount => prevCount + 1);
@@ -86,6 +92,7 @@ const ProductDetailPage: React.FC<MainProductCardProps> = () => {
               <button
                 className="border border-gray-300 bg-gray-200 text-gray-800 px-3 py-1 rounded mx-1"
                 onClick={decrementCount}
+                type="button"
               >
                 -
               </button>
@@ -93,6 +100,7 @@ const ProductDetailPage: React.FC<MainProductCardProps> = () => {
               <button
                 className="border border-gray-300 bg-gray-200 text-gray-800 px-3 py-1 rounded mx-1"
                 onClick={incrementCount}
+                type="button"
               >
                 +
               </button>
@@ -111,7 +119,13 @@ const ProductDetailPage: React.FC<MainProductCardProps> = () => {
       </div>
       <div className=" justify-center">
         같은 카테고리의 다른 상품들
-        <Carousel className="flex justify-center items-center">
+        <Carousel
+          opts={{ loop: true }}
+          plugins={[]}
+          orientation="horizontal"
+          setApi={() => {}}
+          className="flex justify-center items-center"
+        >
           <CarouselContent className="flex ">
             {sameCategoryProducts?.map(sameproduct => (
               <CarouselItem

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { Label } from '@radix-ui/react-label';
@@ -6,21 +5,18 @@ import { Label } from '@radix-ui/react-label';
 const PageHeader = () => {
   const { cart } = useCart();
 
-  const handleBasketClick = () => {
-    navigate('/Basket');
-  };
   return (
     <div>
       <Label className="font-bold text-white text-2xl">WhiteWhale</Label>
       <div className=" flex h-24 items-center m-5 border-b border-t  ">
         <div className="h-24 flex-1 " />
         <div id="MainHeaderSection " className="flex items-center space-x-5" />
-        <button>
+        <button type="button">
           <div className="size-6 mx-5" id="BaksetImageFrame">
             <img src="/logo/ClientIcon.png" alt="ClientIcon" />
           </div>
         </button>
-        <button>
+        <button type="button">
           <div id="MainHeaderSection" />
           <div className="size-6 mx-5 relative" id="BaksetImageFrame">
             <Link to="/Basket">
@@ -33,7 +29,7 @@ const PageHeader = () => {
             </Link>
           </div>
         </button>
-        <button>
+        <button type="button">
           <div id="MainHeaderSection" />
           <div className="size-6 mx-5" id="BaksetImageFrame">
             <img src="/logo/MenuIcon.png" alt="MenuIcon" />

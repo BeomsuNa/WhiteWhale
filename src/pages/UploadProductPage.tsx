@@ -15,7 +15,7 @@ const ProductForm = () => {
   const [productQuantity, setProductQuantity] = useState('');
   const [productCategory, setProductCategory] = useState('');
   const [productDescription, setProductDescription] = useState('');
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState('');
 
   const storage = getStorage();
@@ -40,13 +40,13 @@ const ProductForm = () => {
     return '';
   };
 
-  const handleAddProduct = async e => {
+  const handleAddProduct = async (e: React.FormEvent) => {
     e.preventDefault();
     const url = await handleUploadImage();
     const productData = {
       productName,
       productPrice: parseFloat(productPrice),
-      productQuantity: parseInt(productQuantity),
+      productQuantity: parseInt(productQuantity, 10),
       productDescription,
       productCategory,
       imageUrl: url,
@@ -69,7 +69,10 @@ const ProductForm = () => {
     <section className="bg-white dark:bg-gray-900 flex justify-center items-center min-h-screen">
       <div className="flex flex-col items-center w-full max-w-4xl p-4 overflow-y-auto max-h-screen">
         <div className="w-full mb-4">
-          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          <label
+            htmlFor="productImage"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
             제품 이미지
           </label>
           <input

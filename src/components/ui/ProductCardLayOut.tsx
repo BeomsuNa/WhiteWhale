@@ -14,10 +14,12 @@ const ProductCardLayOut: React.FC<ProductProps> = ({ product }) => {
   };
 
   return (
-    <div
-      className="w-full h-1/5 flex p-5 border border-black mb-5 items-center"
-      onClick={handleEditClick}
-    >
+    <div className="w-full h-1/5 flex p-5 border border-black mb-5 items-center">
+      <div
+        onClick={handleEditClick}
+        onKeyDown={handleEditClick}
+        role="presentation"
+      />
       <img
         src={product.imageUrl}
         alt={product.productName}

@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useFetchInfiniteProducts } from '@/hooks/UseFetchData';
 import MainProductCard from '@/components/ui/MainProductCard';
 import { useInView } from 'react-intersection-observer';
-import { useLocation } from 'react-router-dom';
 import { useProductCategory } from '@/components/context/ProductCategoryContext';
-import { Product, ProductCard } from '@/lib/utils';
-import { orderBy, query, Timestamp } from 'firebase/firestore';
+import { ProductCard } from '@/lib/utils';
 import { useFetchSortedProducts } from '@/hooks/FetchSortedProducts';
 
 const AllProductPage: React.FC = () => {
@@ -74,17 +72,26 @@ const AllProductPage: React.FC = () => {
         <h3 className="text-3xl">현재 {category}의 물품입니다</h3>
 
         <div className="flex">
-          <button onClick={hanldeAllProduct} className="lg:hover:underline">
+          <button
+            onClick={hanldeAllProduct}
+            type="button"
+            className="lg:hover:underline"
+          >
             <h6>전체</h6>
           </button>
           <h6> &nbsp;/&nbsp; </h6>
-          <button onClick={handleSortByPrice} className="lg:hover:underline">
+          <button
+            onClick={handleSortByPrice}
+            type="button"
+            className="lg:hover:underline"
+          >
             가격순
           </button>
           <h6> &nbsp;/&nbsp; </h6>
           <button
             onClick={() => setSortOption('updatedAt')}
             className="lg:hover:underline"
+            type="button"
           >
             날짜순
           </button>

@@ -1,8 +1,5 @@
 import { useCart } from '@/components/context/CartContext';
 import { Button } from '@/components/ui/button';
-import { fetchProductCardData } from '@/hooks/FetchProductCardData';
-import { useFetchInfiniteProducts } from '@/hooks/UseFetchData';
-import { getAuth } from 'firebase/auth';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 

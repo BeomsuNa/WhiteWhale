@@ -9,7 +9,7 @@ import {
 } from 'firebase/firestore';
 import { db } from '@/config/firebase';
 import { Product, FetchProductsResult } from '@/lib/utils';
-// 양을 조금씩 받기 위해 일부러 10개를 지정
+
 const PAGE_SIZE = 10;
 
 const FetchProducts = async ({
@@ -45,7 +45,7 @@ const FetchProducts = async ({
   const products = await Promise.all(productPromises);
   return {
     products,
-    nextPage: lastVisible || null,
+    nextPage: lastVisible ? lastVisible.id : null,
   };
 };
 

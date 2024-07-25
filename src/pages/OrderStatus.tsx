@@ -4,17 +4,18 @@ import { doc, updateDoc } from 'firebase/firestore';
 import { useMutation, useQueryClient } from 'react-query';
 import { usePayments } from '../Order/FetchPayments';
 
+interface Payment {
+  id: string;
+  productName: string;
+  status: string;
+  totalAmount: number;
+}
+
 const useCancelOrder = () => {
   const queryClient = useQueryClient();
 
   return useMutation(
-    async ({
-      orderId,
-      totalAmount,
-    }: {
-      orderId: string;
-      totalAmount: number;
-    }) => {
+    async ({ orderId }: { orderId: string; totalAmount: number }) => {
       const paymentRef = doc(db, 'payments', orderId);
       await updateDoc(paymentRef, { status: 'canceled' });
       // 실제 결제 서비스에서 환불 처리를 해야 합니다.
@@ -29,7 +30,7 @@ const useCancelOrder = () => {
 
 const OrderStatus = () => {
   const { user } = useAuth();
-  const userId = user?.uid;
+  const userId = user?.email;
   const { data: payments, isLoading, error } = usePayments(userId);
   const cancelOrderMutation = useCancelOrder();
 
@@ -40,7 +41,7 @@ const OrderStatus = () => {
     <div>
       <h2>Shipping Status</h2>
       <ul>
-        {payments.map(payment => (
+        {payments?.map((payment: Payment) => (
           <li key={payment.id}>
             <p>Order ID: {payment.id}</p>
             <p>Product: {payment.productName}</p>
@@ -49,6 +50,7 @@ const OrderStatus = () => {
             </p>
             {payment.status !== 'canceled' && (
               <button
+                type="button"
                 onClick={() =>
                   cancelOrderMutation.mutate({
                     orderId: payment.id,
@@ -69,4 +71,4 @@ const OrderStatus = () => {
   );
 };
 
-export default ShippingStatus;
+export default OrderStatus;

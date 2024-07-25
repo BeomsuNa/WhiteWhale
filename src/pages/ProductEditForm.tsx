@@ -10,20 +10,14 @@ import {
 import { db } from '@/config/firebase';
 import { Button } from '@/components/ui/button';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Select } from '@/components/ui/select';
-import {
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@radix-ui/react-select';
 
 interface ProductEditFormProps {
-  productId: string;
-  onClose: () => void;
+  sortOption?: string;
 }
 
-const ProductEditForm: React.FC<ProductEditFormProps> = () => {
+const ProductEditForm: React.FC<ProductEditFormProps> = ({
+  sortOption = 'default',
+}) => {
   const { productId } = useParams<{ productId: string }>();
   const [productName, setProductName] = useState('');
   const [productPrice, setProductPrice] = useState('');
@@ -55,7 +49,7 @@ const ProductEditForm: React.FC<ProductEditFormProps> = () => {
       }
     };
     fetchProduct();
-  }, [productId]);
+  }, [productId, navigate]);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -81,7 +75,7 @@ const ProductEditForm: React.FC<ProductEditFormProps> = () => {
     const productData = {
       productName,
       productPrice: parseFloat(productPrice),
-      productQuantity: parseInt(productQuantity),
+      productQuantity: parseInt(productQuantity, 10),
       productDescription,
       imageUrl: url,
       updatedAt: Timestamp.now(),
@@ -95,8 +89,8 @@ const ProductEditForm: React.FC<ProductEditFormProps> = () => {
     }
   };
 
-  const handleDeleteProduct = async (productId: string) => {
-    await deleteDoc(doc(db, 'Product', productId));
+  const handleDeleteProduct = async (productIds: string) => {
+    await deleteDoc(doc(db, 'Product', productIds));
     navigate('/OrderStatusPage');
   };
 

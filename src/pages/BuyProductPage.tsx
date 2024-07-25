@@ -1,4 +1,3 @@
-import React from 'react';
 import * as PortOne from '@portone/browser-sdk/v2';
 import { useCart } from '@/components/context/CartContext';
 import { ProductCard } from '@/lib/utils';

@@ -9,7 +9,7 @@ interface LoginFormProps {
   onLogin: (email: string, passWord: string) => void;
 }
 
-const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
+const LoginForm: React.FC<LoginFormProps> = () => {
   const [email, setEmail] = useState<string>('');
   const [passWord, setPassWord] = useState<string>('');
   const navigate = useNavigate();

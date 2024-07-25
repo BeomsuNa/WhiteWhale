@@ -4,10 +4,7 @@ import {
   orderBy,
   limit,
   getDocs,
-  startAfter,
   QueryDocumentSnapshot,
-  getDoc,
-  doc,
 } from 'firebase/firestore';
 import { db } from '@/config/firebase';
 import { Product, FetchProductsResult } from '@/lib/utils';
@@ -22,7 +19,6 @@ const fetchProducts = async ({
   );
 
   if (pageParam) {
-    const lasVisible = await getDoc(doc(db, 'Product', pageParam));
     queryData = query(
       collection(db, 'Product'),
       orderBy('createdAt', 'desc'),

@@ -2,7 +2,6 @@ import {
   getDocs,
   collection,
   QueryDocumentSnapshot,
-  Timestamp,
   orderBy,
   query,
   FirestoreDataConverter,

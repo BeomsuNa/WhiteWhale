@@ -38,11 +38,11 @@ function SignUpPage() {
       return;
     }
     if (passWord.length < 8) {
-      console.error('비밀번호는 8자 이상으로 작성해야합니다.');
+      alert('비밀번호는 8자 이상으로 작성해야합니다.');
       return;
     }
     if (passWord !== checkpassWord) {
-      console.error('비밀번호가 일치하지 않습니다. 다시 시도하세요');
+      alert('비밀번호가 일치하지 않습니다. 다시 시도하세요');
       return;
     }
     try {
@@ -62,7 +62,7 @@ function SignUpPage() {
         password: passWord,
       };
       await setDoc(userDocRef, userData);
-      console.log('회원가입에 성공했습니다.');
+      alert('회원가입에 성공했습니다.');
       goToMainPage();
     } catch (error) {
       console.error(error);

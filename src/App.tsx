@@ -7,7 +7,6 @@ import Header from './components/Header';
 import { ProductCategoryProvider } from './components/context/ProductCategoryContext';
 import PageHeader from './components/ui/PageHeader';
 import { CartProvider } from './components/context/CartContext';
-import Drawer from './components/ui/SideDrawer';
 import SideDrawer from './components/ui/SideDrawer';
 import Footer from './components/ui/Footer';
 

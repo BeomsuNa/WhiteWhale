@@ -1,4 +1,4 @@
-import React, {
+import {
   createContext,
   useState,
   useContext,
@@ -9,17 +9,25 @@ import {
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
-  User,
+  User as FirebaseUser,
 } from 'firebase/auth';
 import { useQuery, useQueryClient } from 'react-query';
 import fetchUser from '@/hooks/FetchUser';
+
+export interface User {
+  uid: string;
+  email: string | null;
+  displayName: string | null;
+  photoURL: string | null;
+  // 추가 필드가 필요한 경우 여기에 정의합니다.
+}
 
 interface AuthContextType {
   isLoggedIn: boolean;
   user: User | null;
   login: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
-  firebaseUser: User | null;
+  firebaseUser: FirebaseUser | null;
 }
 
 // 초기 값 설정
@@ -29,7 +37,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export function AuthProvider({ children }: { children: ReactNode }) {
   const queryClient = useQueryClient();
   const auth = getAuth();
-  const [firebaseUser, setFirebaseUser] = useState<User | null>(null);
+  const [firebaseUser, setFirebaseUser] = useState<FirebaseUser | null>(null);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, user => {
@@ -86,7 +94,7 @@ export const useAuth = () => {
     error,
   } = useQuery(
     ['userData', firebaseUser?.uid],
-    () => fetchUser(firebaseUser as User), // firebaseUser 객체를 인수로 전달
+    () => fetchUser(firebaseUser as FirebaseUser), // firebaseUser 객체를 인수로 전달
     { enabled: !!firebaseUser },
   );
 

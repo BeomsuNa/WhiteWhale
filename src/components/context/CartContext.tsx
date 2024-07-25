@@ -1,4 +1,4 @@
-import React, {
+import {
   createContext,
   useState,
   useEffect,
@@ -6,12 +6,11 @@ import React, {
   ReactNode,
 } from 'react';
 import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
-import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
+import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { CartProduct } from '@/lib/utils';
 import { db } from '@/config/firebase';
 
 interface CartContextType {
-  user: User | null;
   cart: CartProduct[];
   addToCart: (product: CartProduct & { quantity: number }) => void;
   removeFromCart: (productId: string) => void;
@@ -35,7 +34,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   // 계정 상태가 변경되었을 때 계정이 있으면 해당 데이터, 없으면 cart상태를 빈배열로 변경
   useEffect(() => {
-    const handleAuthChange = async user => {
+    const handleAuthChange = async (user: User | null) => {
       if (user) {
         const cartRef = doc(db, 'Carts', user.uid);
         const cartDoc = await getDoc(cartRef);

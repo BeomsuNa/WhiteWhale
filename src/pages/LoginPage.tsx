@@ -15,7 +15,9 @@ const LoginPage: React.FC = () => {
   };
 
   const handleLoginSuccess = () => {
-    login(); // 로그인 상태 업데이트
+    if (credentials) {
+      login(credentials.email, credentials.passWord);
+    } // 로그인 상태 업데이트
   };
 
   return (

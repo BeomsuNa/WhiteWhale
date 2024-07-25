@@ -1,7 +1,6 @@
-import { useFetchData, useFetchInfiniteProducts } from '@/hooks/UseFetchData';
+import { useFetchInfiniteProducts } from '@/hooks/UseFetchData';
 import { Button } from '@/components/ui/button';
 import { useInView } from 'react-intersection-observer';
-import { Product } from '@/lib/utils';
 import ProductCard from '@/components/ui/ProductCardLayOut';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -43,8 +42,8 @@ const OrderStatusPage = () => {
       </div>
 
       <div className="w-70% p-20 ">
-        {data?.pages?.map((page, pageIndex) => (
-          <div key={pageIndex}>
+        {data?.pages?.map(page => (
+          <div key={page.products[0]?.id}>
             {page.products.map(product => (
               <ProductCard key={product.id} product={product} />
             ))}

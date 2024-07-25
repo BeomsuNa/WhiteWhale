@@ -21,7 +21,7 @@ export interface Product {
   productQuantity: number;
   sellerId: number;
   updatedAt: Timestamp;
-  imageUrl?: string;
+  imageUrl: string;
 }
 
 export interface FetchProductsResult {

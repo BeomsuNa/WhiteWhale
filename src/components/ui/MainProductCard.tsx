@@ -1,7 +1,6 @@
-import { Label } from '@radix-ui/react-label';
 import React from 'react';
 import { ProductCard } from '@/lib/utils';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 interface MainProductCardProps {
   product: ProductCard;
