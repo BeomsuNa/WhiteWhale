@@ -67,6 +67,7 @@
 ## 2.실행 방법
 
 데모 페이지 : https://white-whale-l34jo2bot-595988s-projects.vercel.app
+
 테스트 계정 
 - 판매자 : test1313@gmail.com  패스워드 : 1q2w3e4r!
 - 구매자 : test3131@gmail.com  패스워드 : 1q2w3e4r!
