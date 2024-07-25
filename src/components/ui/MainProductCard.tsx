@@ -8,7 +8,7 @@ interface MainProductCardProps {
 
 const MainProductCard: React.FC<MainProductCardProps> = ({ product }) => {
   if (!product) {
-    console.log('정보를 받아오지 못했음');
+    alert('정보를 받아오지 못했음');
     return <div>Loading....</div>;
   }
 

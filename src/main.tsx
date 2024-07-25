@@ -34,9 +34,13 @@ const router = createBrowserRouter([
       { path: '/basket', element: <BasketPage /> },
       {
         path: '/buyprodcut',
-        element: <ProductDetailPage sortOption="default" onClose={() => {}} />,
+        element: <BuyProductPage />,
       },
       { path: '/Products', element: <AllProductPage /> },
+      {
+        path: '/buy/:productId',
+        element: <ProductDetailPage sortOption="default" onClose={() => {}} />,
+      },
     ],
   },
 ]);
