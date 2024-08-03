@@ -7,7 +7,9 @@ const PageHeader = () => {
 
   return (
     <div>
-      <Label className="font-bold text-white text-2xl">WhiteWhale</Label>
+      <Label className="font-bold text-white text-2xl">
+        <Link to="/">WhiteWhale</Link>
+      </Label>
       <div className=" flex h-24 items-center m-5 border-b border-t  ">
         <div className="h-24 flex-1 " />
         <div id="MainHeaderSection " className="flex items-center space-x-5" />

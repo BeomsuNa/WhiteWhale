@@ -15,19 +15,21 @@ const ProductCardLayOut: React.FC<ProductProps> = ({ product }) => {
   };
 
   return (
-    <div className="w-full h-1/5 flex p-5 border border-black mb-5 items-center">
-      <Link to={`/edit/${product.id}`}>
+    <Link to={`/edit/${product.id}`}>
+      <div className="w-full h-auto grid grid-cols-3 gap-5 border border-black mb-5 items-center">
         <img
           src={product.imageUrl}
           alt={product.productName}
-          className="w-1/6 h-auto px-5 "
+          className="w-64 h-64 p-5 "
         />
-        <div className="w-1/6">제목 : {product.productName}</div>
-        <div className="w-2/6">설명 :{product.productDescription}</div>
-        <div className="w-1/6">가격 : {product.productPrice}</div>
-        <div className="w-1/6">수량 : {product.productQuantity}</div>
-      </Link>
-    </div>
+        <div className="flex flex-col items-start ml-24">
+          <div>제목 : {product.productName}</div>
+          <div>설명 :{product.productDescription}</div>
+          <div>가격 : {product.productPrice}</div>
+        </div>
+        <div>수량 : {product.productQuantity}</div>
+      </div>
+    </Link>
   );
 };
 

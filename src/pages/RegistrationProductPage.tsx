@@ -31,7 +31,7 @@ const OrderStatusPage = () => {
   };
 
   return (
-    <div className="w-11/12 h-full">
+    <div className="w-4/5 mx-auto">
       <div id="orderTitle">
         <div className="font-bold p-20 text-white flex flex-row justify-between">
           <p className="text-lg">주문현황</p>

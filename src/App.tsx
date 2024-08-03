@@ -3,7 +3,7 @@ import './App.css';
 import Main from './pages/BackGroundPage';
 import { AuthProvider } from './components/context/AuthContext';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import Header from './components/Header';
+import Header from './components/ui/TopBar';
 import { ProductCategoryProvider } from './components/context/ProductCategoryContext';
 import PageHeader from './components/ui/PageHeader';
 import { CartProvider } from './components/context/CartContext';
@@ -18,16 +18,16 @@ function App() {
         <AuthProvider>
           <ProductCategoryProvider>
             <div
-              className="w-full h-screen flex flex-col justify-start space-x-3 bg-backgroundColor "
+              className="w-full h-screen flex:1 flex-col justify-start  bg-backgroundColor "
               id="mainSection"
             >
               <Header />
               <SideDrawer />
               <PageHeader />
               <Main />
-              <div className="flex-grow">
-                <Outlet />
-              </div>
+              {/* <div className="flex-grow"> */}
+              <Outlet />
+              {/* </div> */}
               <Footer />
             </div>
           </ProductCategoryProvider>

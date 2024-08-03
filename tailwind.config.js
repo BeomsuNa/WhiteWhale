@@ -53,6 +53,7 @@ module.exports = {
         },
         backgroundColor: '#373A40',
         productpage: '#D4D4D4',
+        customOrange: '#D48029',
       },
       borderRadius: {
         lg: 'var(--radius)',

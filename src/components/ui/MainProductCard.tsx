@@ -15,27 +15,40 @@ const MainProductCard: React.FC<MainProductCardProps> = ({ product }) => {
   return (
     <div>
       <div
-        className="w-64 h-64 rounded-xl border border-white m-3"
+        className="w-64 h-64 rounded-xl border border-white m-3 hover:bg-customOrange hover:border-black hover:border-2 transition-colors duration-200 group"
         id="cardBorderSection"
       >
         <Link to={`/buy/${product.id}`} state={{ product }}>
-          <div className="w-full h-2/3">
+          <div
+            className="w-full h-2/3 overflow-hidden flex justify-center items-center "
+            id="MainProductCardImgSection"
+          >
             <img
               src={product.imageUrl}
               alt={product.productName}
-              className="object-contain"
+              className="w-48 h-36 object-cover border border-black border-0.5"
             />
           </div>
+          <div className="w-full border-t border-white mb-1 group-hover:border-black group-hover:border-1" />
           <div
-            className="flex flex-row justify-between items-center  h-1/3 "
+            className="flex flex-col justify-center items-center  h-1/3 "
             id="MainCardGuideLine"
           >
-            <div id="mainCardTitle" className="text-white font-bold flex-1 ">
+            <div
+              id="mainCardTitle"
+              className="text-white font-bold group-hover:text-black "
+            >
               {product.productName}
             </div>
-            <div className="h-full border-l border-white mx-2" />
-            <div id="mainCardPrice" className="text-white font-bold flex-1">
-              {product.productPrice}
+            <div className="w-full border-t border-white my-2 group-hover:border-black group-hover:border-1" />
+            <div
+              id="mainCardPrice"
+              className="text-white font-bold group-hover:text-black"
+            >
+              {product.productPrice
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+              원
             </div>
           </div>
         </Link>
