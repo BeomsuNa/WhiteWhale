@@ -78,7 +78,7 @@ const MainPageLayOut: React.FC<MainPageLayOutProps> = ({ sortOption }) => {
             >
               <CarouselContent>
                 {productsIndex.map(product => (
-                  <CarouselItem key={product.id} className="basis-1/4">
+                  <CarouselItem key={product.id} className="basis-1/5">
                     <MainProductCard product={product} />
                   </CarouselItem>
                 ))}

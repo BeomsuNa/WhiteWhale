@@ -29,7 +29,7 @@ const ProductDetailPage: React.FC<MainProductCardProps> = ({
   const { productId } = useParams<{ productId: string }>();
   const { data: products } = useFetchProductCardData(sortOption);
   const { addToCart } = useCart();
-  const [orderProductCount, setOrderProductCount] = useState<number>(0);
+  const [orderProductCount, setOrderProductCount] = useState<number>(1);
   const [finishiCart, setFinishiCart] = useState(false);
   const [emblaApi, setEmblaApi] = useState<CarouselApi | null>(null);
 
@@ -47,7 +47,6 @@ const ProductDetailPage: React.FC<MainProductCardProps> = ({
   const currentProduct = products?.find(
     curproduct => curproduct.id === productId,
   );
-  console.log('현재 상품의 아이디는?', currentProduct);
   if (!currentProduct) {
     return <div>상품을 찾을 수 없습니다.</div>;
   }
@@ -63,7 +62,7 @@ const ProductDetailPage: React.FC<MainProductCardProps> = ({
       alert('개수를 선택해주세요!');
     } else {
       addToCart({ ...product, quantity: orderProductCount });
-      console.log('장바구니에 담겼습니다', orderProductCount);
+      alert('선택하신 상품을 장바구니에 담았습니다!');
       setFinishiCart(true);
     }
   };
@@ -73,48 +72,78 @@ const ProductDetailPage: React.FC<MainProductCardProps> = ({
   };
   return (
     <div className="h-full w-full">
-      <div className="h-3/5 flex items-center">
-        <div className="w-1/2 mx-128">
-          <div className="w-96 h-96 overflow-hidden mx-72">
+      <div className="h-3/5 flex items-center justify-center">
+        <div>
+          <div className="w-96 h-96 border mr-10">
             <img
               src={product.imageUrl}
               alt={product.productName}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover "
             />
           </div>
         </div>
-        <div className="w-1/2 ">
-          <h1>{product.productName}제목</h1>
-          <div>남은 수량 : {product.productQuantity}</div>
-          <div>
-            <div>
-              구매수량 :
-              <button
-                className="border border-gray-300 bg-gray-200 text-gray-800 px-3 py-1 rounded mx-1"
-                onClick={decrementCount}
-                type="button"
-              >
-                -
-              </button>
-              {orderProductCount}
-              <button
-                className="border border-gray-300 bg-gray-200 text-gray-800 px-3 py-1 rounded mx-1"
-                onClick={incrementCount}
-                type="button"
-              >
-                +
-              </button>
+        <div className="h-full  flex flex-col items-center justify-center">
+          <div className="w-full divide-y divide-y-0.5 divide-slate-600">
+            <h1 className="text-3xl  w-full text-left my-5">
+              {product.productName}
+            </h1>
+            <div className="w-full">
+              <h1 className="text-2xl font-bold w-full text-left my-5">
+                남은 수량 :{' '}
+                {product.productPrice
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+              </h1>
+            </div>
+            <div className="w-full">
+              <h1 className="text-xl  w-full text-left my-5">
+                남은 수량 : {product.productQuantity}
+              </h1>
+            </div>
+
+            <div className="w-full">
+              <h1 className="text-xl  w-full text-left my-5">
+                구매수량 :
+                <button
+                  className="border border-gray-300 bg-gray-200 text-gray-800 px-3 py-1 rounded mx-1"
+                  onClick={decrementCount}
+                  type="button"
+                >
+                  -
+                </button>
+                {orderProductCount}
+                <button
+                  className="border border-gray-300 bg-gray-200 text-gray-800 px-3 py-1 rounded mx-1"
+                  onClick={incrementCount}
+                  type="button"
+                >
+                  +
+                </button>
+              </h1>
+            </div>
+
+            <div className="w-full">
+              <h1 className="text-2xl font-bold mt-5 text-left">
+                총 상품 가격 :{' '}
+                {(product.productPrice * orderProductCount)
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                원
+              </h1>
             </div>
           </div>
-          <div>구매 가격 : {product.productPrice}원</div>
-
-          <Button>구매하기</Button>
-
-          {finishiCart === true ? (
-            <Button onClick={goToBaseketPagae}>장바구니보기</Button>
-          ) : (
-            <Button onClick={handleAddToCart}>장바구니담기</Button>
-          )}
+          <div className="my-5 space-x-10">
+            <Button className="px-10">구매하기</Button>
+            {finishiCart === true ? (
+              <Button className="px-7" onClick={goToBaseketPagae}>
+                장바구니보기
+              </Button>
+            ) : (
+              <Button className="px-7" onClick={handleAddToCart}>
+                장바구니담기
+              </Button>
+            )}
+          </div>
         </div>
       </div>
       <div className=" justify-center">

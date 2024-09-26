@@ -4,6 +4,7 @@ import { ProductCard } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '@/config/firebase';
+import Geocoder from '@/Order/Geocoder';
 
 interface PaymentResponse {
   success: boolean;
@@ -58,9 +59,71 @@ const BuyProductPage = () => {
   };
 
   return (
-    <div className="">
+    <div className="mx-48">
       <h1> 결제페이지</h1>
-      <div className="w-full">
+      <div className="flex">
+        <h2 className=" font-bold text-xl mt-10">주문자 정보</h2>
+      </div>
+      <div className="w-4/6 h-64 flex justify-center items-start flex-col ">
+        <div className="flex flex-col items-start w-full ">
+          <input
+            placeholder="이름을 입력하세요"
+            className="w-3/5 mb-5 px-4 py-2 border rounded-md"
+          />
+        </div>
+        <div className="flex space-x-3 w-3/5">
+          <select title="휴대폰 사업자" className="px-4 py-2 border rounded-md">
+            <option value="010" selected>
+              010
+            </option>
+            <option value="011">011</option>
+            <option value="016">016</option>
+            <option value="017">017</option>
+            <option value="018">018</option>
+          </select>
+          <input
+            placeholder="전화번호를 입력하세요"
+            className="w-full px-4 py-2 border rounded-md "
+          />
+          <input
+            placeholder="전화번호를 입력하세요"
+            className="w-full px-4 py-2 border rounded-md"
+          />
+        </div>
+        <div className="mt-5 w-3/5 flex items-center space-x-2">
+          <input
+            placeholder="이메일을 입력하세요"
+            className="w-3/5 px-4 py-2 border rounded-md"
+          />
+          <span>@</span>
+          <select className=" w-2/5 px-4 py-2 border rounded-md text-center">
+            <option value="naver.com">naver.com</option>
+            <option value="hanmail.net">hanmail.net</option>
+            <option value="nate.com">nate.com</option>
+            <option value="gmail.com">gmail.com</option>
+          </select>
+        </div>
+      </div>
+      <div className="flex">
+        <h2 className="font-bold text-xl mt-10 mb-10">배송지 정보</h2>
+      </div>
+      <div className="w-4/6 h-64 flex justify-center items-start flex-col ">
+        <Geocoder />
+        <div className="mt-5 w-3/5 flex items-center space-x-2">
+          <input
+            placeholder="이메일을 입력하세요"
+            className="w-3/5 px-4 py-2 border rounded-md"
+          />
+          <span>@</span>
+          <select className=" w-2/5 px-4 py-2 border rounded-md text-center">
+            <option value="naver.com">naver.com</option>
+            <option value="hanmail.net">hanmail.net</option>
+            <option value="nate.com">nate.com</option>
+            <option value="gmail.com">gmail.com</option>
+          </select>
+        </div>
+      </div>
+      <div className="w-full h-64">
         <ul>
           {cart.map(product => (
             <li key={product.id} className="mb-4 border-b pb-4">
