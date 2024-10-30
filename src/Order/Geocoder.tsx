@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import React, { useState, useEffect, useRef } from 'react';
+import { useQueryClient } from 'react-query';
 
 declare global {
   interface Window {
@@ -46,10 +47,13 @@ interface PostcodeData {
 }
 
 const Geocoder: React.FC = () => {
+  const [postAddress, setPostAddress] = useState<string>('');
+  const [mainAddress, setMainAddress] = useState<string>('');
+  const [detailAddress, setDetailAddress] = useState<string>('');
+
   // 주소 입력을 위한 상태값
-  const [postcodeData, setPostcodeData] = useState<PostcodeData | null>(null);
-  const [detailAddress, setDetailAddress] = useState('');
   const detailAddressRef = useRef<HTMLInputElement>(null);
+  const queryClient = useQueryClient();
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -63,7 +67,14 @@ const Geocoder: React.FC = () => {
   const DaumPostcode = () => {
     new window.daum.Postcode({
       oncomplete: (data: PostcodeData) => {
-        setPostcodeData(data);
+        setPostAddress(data.zonecode);
+        setMainAddress(data.address);
+
+        queryClient.setQueriesData('addressData', {
+          zonecode: data.zonecode,
+          address: data.address,
+          detailAddress: detailAddressRef.current?.value || '',
+        });
         if (detailAddressRef.current) {
           detailAddressRef.current.focus();
         }
@@ -76,7 +87,8 @@ const Geocoder: React.FC = () => {
       <input
         type="text"
         placeholder="우편번호"
-        value={postcodeData?.zonecode || ''}
+        value={postAddress}
+        readOnly
         className="w-3/5 h-10 px-4 py-2 border rounded-md"
       />
       <Button type="button" onClick={DaumPostcode} className="mt-3">
@@ -86,7 +98,7 @@ const Geocoder: React.FC = () => {
       <input
         type="text"
         placeholder="주소"
-        value={postcodeData?.address || ''}
+        value={mainAddress}
         readOnly
         className="w-3/5 h-10 px-4 py-2 border rounded-md"
       />
@@ -95,7 +107,6 @@ const Geocoder: React.FC = () => {
         type="text"
         placeholder="상세주소"
         ref={detailAddressRef}
-        value={detailAddress}
         onChange={e => setDetailAddress(e.target.value)}
         className="w-3/5 h-10 px-4 py-2 border rounded-md"
       />

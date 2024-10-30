@@ -42,3 +42,7 @@ export interface ProductCard {
 export interface CartProduct extends ProductCard {
   quantity: number;
 }
+
+export interface postInfo {
+  postcodeData: string;
+}

@@ -6,6 +6,7 @@ const FetchUser = async (firebaseUser: User) => {
   const userDoc = await getDoc(doc(db, 'User', firebaseUser.uid));
   if (userDoc.exists()) {
     return {
+      uid: firebaseUser.uid,
       email: userDoc.data().email,
       isSeller: userDoc.data().isSeller,
       nickname: userDoc.data().nickname,

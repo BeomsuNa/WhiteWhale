@@ -1,8 +1,8 @@
 import { useAuth } from '@/components/context/AuthContext';
 import { db } from '@/config/firebase';
+import { usePayments } from '@/Order/FetchPayments';
 import { doc, updateDoc } from 'firebase/firestore';
 import { useMutation, useQueryClient } from 'react-query';
-import { usePayments } from '../Order/FetchPayments';
 
 interface Payment {
   id: string;
@@ -30,8 +30,9 @@ const useCancelOrder = () => {
 
 const OrderStatus = () => {
   const { user } = useAuth();
-  const userId = user?.email;
+  const userId = user?.uid ?? '';
   const { data: payments, isLoading, error } = usePayments(userId);
+  console.log('상품의 데이터는?', payments);
   const cancelOrderMutation = useCancelOrder();
 
   if (isLoading) return <div>Loading...</div>;
@@ -39,7 +40,8 @@ const OrderStatus = () => {
 
   return (
     <div>
-      <h2>Shipping Status</h2>
+      <h2>Shipping Statusd</h2>
+
       <ul>
         {payments?.map((payment: Payment) => (
           <li key={payment.id}>

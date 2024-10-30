@@ -101,6 +101,7 @@ export const useAuth = () => {
   return {
     isLoggedIn: !!firebaseUser,
     user,
+    firebaseUser,
     login,
     logout,
     isLoading: userLoading,

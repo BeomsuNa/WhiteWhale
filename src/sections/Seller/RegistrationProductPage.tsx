@@ -5,7 +5,7 @@ import ProductCard from '@/components/ui/ProductCardLayOut';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
-const OrderStatusPage = () => {
+const RegistrationProductPage = () => {
   const navigate = useNavigate();
   const [ref, inView] = useInView();
   const {
@@ -57,4 +57,4 @@ const OrderStatusPage = () => {
   );
 };
 
-export default OrderStatusPage;
+export default RegistrationProductPage;

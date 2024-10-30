@@ -2,18 +2,19 @@ import * as ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import SignUp from './pages/SignUpPage';
-import Login from './pages/LoginPage';
+import SignUp from './sections/Buyer/SignUpPage';
+import Login from './sections/Buyer/LoginPage';
 import MyPage from './pages/MyPage';
-import OrderStatusPage from './pages/RegistrationProductPage';
 import DeliveryStatusPage from './pages/DeliveryStatusPage';
 import UploadProductPage from './pages/UploadProductPage';
-import ProductEditForm from './pages/ProductEditForm';
+import ProductEditForm from './sections/Seller/ProductEditForm';
 import MainPageLayOut from './pages/MainPageLayOut';
 import ProductDetailPage from './pages/ProductDetailPage';
 import AllProductPage from './pages/AllProdcutPage';
-import BasketPage from './pages/BasketPage';
-import BuyProductPage from './pages/BuyProductPage';
+import BasketPage from './sections/Buyer/BasketPage';
+import BuyProductPage from './sections/Buyer/BuyProductPage';
+import RegistrationProductPage from './sections/Seller/RegistrationProductPage';
+import OrderStatus from './sections/Buyer/OrderStatus';
 
 const router = createBrowserRouter([
   {
@@ -23,13 +24,16 @@ const router = createBrowserRouter([
       { path: '/', element: <MainPageLayOut sortOption="default" /> },
       { path: '/login', element: <Login /> },
       { path: '/mypage', element: <MyPage /> },
-      { path: '/orderstatuspage', element: <OrderStatusPage /> },
+      {
+        path: '/registrationproudctpage',
+        element: <RegistrationProductPage />,
+      },
       {
         path: '/edit/:productId',
         element: <ProductEditForm />,
       },
       { path: '/uploadproductpage', element: <UploadProductPage /> },
-      { path: '/deliverystatuspage', element: <DeliveryStatusPage /> },
+      { path: '/deliverystatuspage', element: <OrderStatus /> },
       { path: '/signup', element: <SignUp /> },
       { path: '/basket', element: <BasketPage /> },
       {
