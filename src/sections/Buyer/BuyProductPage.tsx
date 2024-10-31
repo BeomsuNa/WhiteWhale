@@ -17,6 +17,7 @@ interface PaymentResponse {
   code: number;
   message: string;
   postcodeData: string;
+  productImg: string;
 }
 
 const BuyProductPage = () => {
@@ -63,6 +64,7 @@ const BuyProductPage = () => {
               createdAt: new Date(),
               buyeraddress: addressData || {},
               payState: true,
+              productImg: product.imageUrl,
             });
           }
           return response;

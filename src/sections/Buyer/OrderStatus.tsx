@@ -7,6 +7,7 @@ import { useMutation, useQueryClient } from 'react-query';
 
 interface Payment {
   id: string;
+  productImg: string;
   productName: string;
   payState: string;
   totalAmount: number;
@@ -46,8 +47,9 @@ const OrderStatus = () => {
         {payments?.map((payment: Payment) => (
           <li key={payment.id}>
             <OrderForm
+              productImg={payment.productImg}
               productName={payment.productName}
-              paystatus={payment.payState}
+              payState={payment.payState}
               totalAmount={payment.totalAmount}
               onCancel={() =>
                 cancelOrderMutation.mutate({

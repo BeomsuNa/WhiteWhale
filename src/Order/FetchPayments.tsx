@@ -6,7 +6,7 @@ import { useQuery, UseQueryResult } from 'react-query';
 interface Payment {
   id: string;
   productName: string;
-  status: string;
+  payState: string;
   totalAmount: number;
   userId: string;
   // 필요한 다른 필드들 추가
