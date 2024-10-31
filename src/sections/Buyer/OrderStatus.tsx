@@ -1,4 +1,5 @@
 import { useAuth } from '@/components/context/AuthContext';
+import OrderForm from '@/components/ui/OrderForm';
 import { db } from '@/config/firebase';
 import { usePayments } from '@/Order/FetchPayments';
 import { doc, updateDoc } from 'firebase/firestore';
@@ -7,7 +8,7 @@ import { useMutation, useQueryClient } from 'react-query';
 interface Payment {
   id: string;
   productName: string;
-  status: string;
+  payState: string;
   totalAmount: number;
 }
 
@@ -32,40 +33,29 @@ const OrderStatus = () => {
   const { user } = useAuth();
   const userId = user?.uid ?? '';
   const { data: payments, isLoading, error } = usePayments(userId);
-  console.log('상품의 데이터는?', payments);
   const cancelOrderMutation = useCancelOrder();
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading shipping status</div>;
 
   return (
-    <div>
-      <h2>Shipping Statusd</h2>
+    <div className=" flex flex-col w-full max-w-lg mx-auto justify-center items-center ">
+      <h2 className="text-2xl font-semibold mb-4">Shipping Statusd</h2>
 
-      <ul>
+      <ul className="w-full">
         {payments?.map((payment: Payment) => (
           <li key={payment.id}>
-            <p>Order ID: {payment.id}</p>
-            <p>Product: {payment.productName}</p>
-            <p>
-              Status: {payment.status === 'canceled' ? '주문취소' : '배송중'}
-            </p>
-            {payment.status !== 'canceled' && (
-              <button
-                type="button"
-                onClick={() =>
-                  cancelOrderMutation.mutate({
-                    orderId: payment.id,
-                    totalAmount: payment.totalAmount,
-                  })
-                }
-                disabled={cancelOrderMutation.isLoading}
-              >
-                {cancelOrderMutation.isLoading
-                  ? 'Cancelling...'
-                  : 'Cancel Order'}
-              </button>
-            )}
+            <OrderForm
+              productName={payment.productName}
+              paystatus={payment.payState}
+              totalAmount={payment.totalAmount}
+              onCancel={() =>
+                cancelOrderMutation.mutate({
+                  orderId: payment.id,
+                  totalAmount: payment.totalAmount,
+                })
+              }
+            />
           </li>
         ))}
       </ul>

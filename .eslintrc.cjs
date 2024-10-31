@@ -60,19 +60,18 @@ module.exports = {
     'react/jsx-filename-extension': [
       1,
       { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
-
     ],
-          'react-refresh/only-export-components': "off",
-          "react/require-default-props": "off",
+    'react-refresh/only-export-components': 'off',
+    'react/require-default-props': 'off',
 
     // 기타 관련
     'no-undef': 'off',
     'no-console': 'off',
-     'no-unused-vars': 'off',
+    'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['off'],
-    "no-alert" : "off",
-    'consistent-return' : 'off',
-    '@typescript-eslint/no-explicit-any' : 'off'
+    'no-alert': 'off',
+    'consistent-return': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
   },
 
   settings: {
