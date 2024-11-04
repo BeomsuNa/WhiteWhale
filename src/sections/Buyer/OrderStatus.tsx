@@ -41,7 +41,7 @@ const OrderStatus = () => {
 
   return (
     <div className=" flex flex-col w-full max-w-lg mx-auto justify-center items-center ">
-      <h2 className="text-2xl font-semibold mb-4">Shipping Statusd</h2>
+      <h2 className="text-2xl font-semibold m`b-4">Shipping Statusd</h2>
 
       <ul className="w-full">
         {payments?.map((payment: Payment) => (

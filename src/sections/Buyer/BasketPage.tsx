@@ -28,7 +28,7 @@ const BasketPage: React.FC = () => {
               <li key={product.id} className="mb-4 border-b pb-4">
                 <div className="flex items-center">
                   <img
-                    src={product.imageUrl}
+                    data-src={product.imageUrl}
                     alt={product.productName}
                     className="w-24 h-24 object-cover mr-4"
                   />

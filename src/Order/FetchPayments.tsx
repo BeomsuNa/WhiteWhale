@@ -4,6 +4,7 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 import { useQuery, UseQueryResult } from 'react-query';
 
 interface Payment {
+  productImg: string;
   id: string;
   productName: string;
   payState: string;
