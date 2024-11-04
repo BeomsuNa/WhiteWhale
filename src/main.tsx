@@ -5,7 +5,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import SignUp from './sections/Buyer/SignUpPage';
 import Login from './sections/Buyer/LoginPage';
 import MyPage from './pages/MyPage';
-import DeliveryStatusPage from './pages/DeliveryStatusPage';
 import UploadProductPage from './pages/UploadProductPage';
 import ProductEditForm from './sections/Seller/ProductEditForm';
 import MainPageLayOut from './pages/MainPageLayOut';
