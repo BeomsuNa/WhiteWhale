@@ -4,7 +4,7 @@ import { Button } from './button';
 interface ShippingCardProps {
   productImg: string;
   productName: string;
-  payState: string;
+  payState: boolean;
   totalAmount: number;
   onCancel: () => void;
 }
@@ -30,7 +30,7 @@ const OrderForm: React.FC<ShippingCardProps> = ({
       <div>
         <h3>{payState ? `배송중` : `결제필요`}</h3>
       </div>
-      <div>{payState !== 'canceled' && <Button onClick={onCancel} />}</div>
+      <div>{payState !== false && <Button onClick={onCancel} />}</div>
     </div>
   );
 };

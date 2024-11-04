@@ -9,7 +9,7 @@ interface Payment {
   id: string;
   productImg: string;
   productName: string;
-  payState: string;
+  payState: boolean;
   totalAmount: number;
 }
 
@@ -19,7 +19,7 @@ const useCancelOrder = () => {
   return useMutation(
     async ({ orderId }: { orderId: string; totalAmount: number }) => {
       const paymentRef = doc(db, 'payments', orderId);
-      await updateDoc(paymentRef, { status: 'canceled' });
+      await updateDoc(paymentRef, { payState: false });
       // 실제 결제 서비스에서 환불 처리를 해야 합니다.
     },
     {

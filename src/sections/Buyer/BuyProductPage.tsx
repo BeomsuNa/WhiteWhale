@@ -18,6 +18,7 @@ interface PaymentResponse {
   message: string;
   postcodeData: string;
   productImg: string;
+  payState: boolean;
 }
 
 const BuyProductPage = () => {

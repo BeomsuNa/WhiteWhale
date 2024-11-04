@@ -7,7 +7,7 @@ interface Payment {
   productImg: string;
   id: string;
   productName: string;
-  payState: string;
+  payState: boolean;
   totalAmount: number;
   userId: string;
   // 필요한 다른 필드들 추가
