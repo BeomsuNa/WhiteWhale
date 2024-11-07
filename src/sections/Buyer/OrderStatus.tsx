@@ -15,10 +15,9 @@ interface Payment {
 
 const useCancelOrder = () => {
   const queryClient = useQueryClient();
-
   return useMutation(
     async ({ orderId }: { orderId: string; totalAmount: number }) => {
-      const paymentRef = doc(db, 'payments', orderId);
+      const paymentRef = doc(db, 'purchases', orderId);
       await updateDoc(paymentRef, { payState: false });
       // 실제 결제 서비스에서 환불 처리를 해야 합니다.
     },
@@ -40,7 +39,7 @@ const OrderStatus = () => {
   if (error) return <div>Error loading shipping status</div>;
 
   return (
-    <div className=" flex flex-col w-full max-w-lg mx-auto justify-center items-center ">
+    <div className=" flex flex-col w-full max-w-5xl mx-auto justify-center items-center ">
       <h2 className="text-2xl font-semibold m`b-4">Shipping Statusd</h2>
 
       <ul className="w-full">
