@@ -24,10 +24,11 @@ const OrderForm: React.FC<ShippingCardProps> = ({
   };
 
   return (
-    <div className="w-full p-4 bg-white border flex m-5 rounded space-x-3 items-center justify-between">
-      <div className="w-32 h-32 rounded overflow-hidden">
-        <img src={productImg} alt="" />
-      </div>
+    <article className="w-full p-4 bg-white border flex m-5 rounded space-x-3 items-center justify-between">
+      <figure className="w-32 h-32 rounded overflow-hidden">
+        <img src={productImg} alt={productName} />
+        <figcaption className="sr-only">{productName}</figcaption>
+      </figure>
       <div className="flex">
         <h2>상품명</h2>
         <h3> {productName}</h3>
@@ -42,7 +43,7 @@ const OrderForm: React.FC<ShippingCardProps> = ({
       <div className="flex">
         {payState !== false && <Button onClick={hadnleCancel}>배송취소</Button>}
       </div>
-    </div>
+    </article>
   );
 };
 

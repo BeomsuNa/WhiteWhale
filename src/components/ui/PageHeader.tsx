@@ -6,7 +6,7 @@ const PageHeader = () => {
   const { cart } = useCart();
 
   return (
-    <div>
+    <header>
       <Label className="font-bold text-white text-2xl">
         <Link to="/">WhiteWhale</Link>
       </Label>
@@ -38,7 +38,7 @@ const PageHeader = () => {
           </div>
         </button>
       </div>
-    </div>
+    </header>
   );
 };
 

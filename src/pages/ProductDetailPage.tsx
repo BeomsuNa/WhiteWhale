@@ -71,19 +71,20 @@ const ProductDetailPage: React.FC<MainProductCardProps> = ({
     navigate('/basket');
   };
   return (
-    <div className="h-full w-full">
+    <article className="h-full w-full">
       <div className="h-3/5 flex items-center justify-center">
         <div>
-          <div className="w-96 h-96 border mr-10">
+          <figure className="w-96 h-96 border mr-10">
             <img
               src={product.imageUrl}
               alt={product.productName}
               className="w-full h-full object-cover "
             />
-          </div>
+            <figcaption className="sr-only">{product.productName}</figcaption>
+          </figure>
         </div>
         <div className="h-full  flex flex-col items-center justify-center">
-          <div className="w-full divide-y divide-y-0.5 divide-slate-600">
+          <header className="w-full divide-y divide-y-0.5 divide-slate-600">
             <h1 className="text-3xl  w-full text-left my-5">
               {product.productName}
             </h1>
@@ -131,8 +132,8 @@ const ProductDetailPage: React.FC<MainProductCardProps> = ({
                 원
               </h1>
             </div>
-          </div>
-          <div className="my-5 space-x-10">
+          </header>
+          <main className="my-5 space-x-10">
             <Button className="px-10">구매하기</Button>
             {finishiCart === true ? (
               <Button className="px-7" onClick={goToBaseketPagae}>
@@ -143,10 +144,10 @@ const ProductDetailPage: React.FC<MainProductCardProps> = ({
                 장바구니담기
               </Button>
             )}
-          </div>
+          </main>
         </div>
       </div>
-      <div className=" justify-center">
+      <footer className=" justify-center">
         같은 카테고리의 다른 상품들
         <Carousel
           opts={{ loop: true }}
@@ -168,8 +169,8 @@ const ProductDetailPage: React.FC<MainProductCardProps> = ({
           <CarouselPrevious />
           <CarouselNext />
         </Carousel>
-      </div>
-    </div>
+      </footer>
+    </article>
   );
 };
 

@@ -70,44 +70,48 @@ function SignUpPage() {
   };
 
   return (
-    <div>
+    <article>
       SignUp 회원가입 페이지입니다.
       <form onSubmit={onRegister}>
-        <p>이메일</p>
-        <Input
-          type="email"
-          id="email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-        />
-        <Label htmlFor="passWord">비밀번호</Label>
-        <Input
-          type="password"
-          id="passWord"
-          value={passWord}
-          onChange={e => setPassWord(e.target.value)}
-        />
-        <Label htmlFor="checkPassWord">비밀번호확인</Label>
-        <Input
-          type="password"
-          id="checkPassWord"
-          value={checkpassWord}
-          onChange={e => setCheckPassWord(e.target.value)}
-        />
-        <Label htmlFor="nickName">닉네임</Label>
-        <Input
-          id="nickName"
-          value={nickName}
-          onChange={e => setNickName(e.target.value)}
-        />
-        <Checkbox checked={checked} onCheckedChange={handleCheckBox} />
-        <p>판매자입니까?{checked ? 'check' : 'not check'}</p>
-        <div>
+        <fieldset>
+          <legend>
+            <p>이메일</p>
+            <Input
+              type="email"
+              id="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+            />
+            <Label htmlFor="passWord">비밀번호</Label>
+            <Input
+              type="password"
+              id="passWord"
+              value={passWord}
+              onChange={e => setPassWord(e.target.value)}
+            />
+            <Label htmlFor="checkPassWord">비밀번호확인</Label>
+            <Input
+              type="password"
+              id="checkPassWord"
+              value={checkpassWord}
+              onChange={e => setCheckPassWord(e.target.value)}
+            />
+            <Label htmlFor="nickName">닉네임</Label>
+            <Input
+              id="nickName"
+              value={nickName}
+              onChange={e => setNickName(e.target.value)}
+            />
+            <Checkbox checked={checked} onCheckedChange={handleCheckBox} />
+            <p>판매자입니까?{checked ? 'check' : 'not check'}</p>
+          </legend>
+        </fieldset>
+        <main>
           <Button type="submit">회원가입</Button>
           <Button onClick={goToMainPage}>돌아가기</Button>
-        </div>
+        </main>
       </form>
-    </div>
+    </article>
   );
 }
 

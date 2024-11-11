@@ -57,38 +57,42 @@ const MainPageLayOut: React.FC<MainPageLayOutProps> = ({ sortOption }) => {
   };
 
   return (
-    <div className="main-page-layout p-20 ">
-      {categorizedProducts &&
-        Object.entries(categorizedProducts).map(([category, productsIndex]) => (
-          <div key={category} className="category-section">
-            <Label className="mt-4 font-bold">{category}</Label>
-            <button
-              className="absolute right-64 text-sm cursor-pointer hover:underline hover:text-white"
-              onClick={() => handleCategoryClick(category)}
-              type="button"
-            >
-              전체보기
-            </button>
-            <hr className="border-t border-gray-300 m-5" />
-            <Carousel
-              opts={{ loop: true }}
-              plugins={[]}
-              orientation="horizontal"
-              setApi={() => {}}
-            >
-              <CarouselContent>
-                {productsIndex.map(product => (
-                  <CarouselItem key={product.id} className="basis-1/5">
-                    <MainProductCard product={product} />
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
-            </Carousel>
-          </div>
-        ))}
-    </div>
+    <main>
+      <div className="main-page-layout p-20 ">
+        {categorizedProducts &&
+          Object.entries(categorizedProducts).map(
+            ([category, productsIndex]) => (
+              <div key={category} className="category-section">
+                <Label className="mt-4 font-bold">{category}</Label>
+                <button
+                  className="absolute right-64 text-sm cursor-pointer hover:underline hover:text-white"
+                  onClick={() => handleCategoryClick(category)}
+                  type="button"
+                >
+                  전체보기
+                </button>
+                <hr className="border-t border-gray-300 m-5" />
+                <Carousel
+                  opts={{ loop: true }}
+                  plugins={[]}
+                  orientation="horizontal"
+                  setApi={() => {}}
+                >
+                  <CarouselContent>
+                    {productsIndex.map(product => (
+                      <CarouselItem key={product.id} className="basis-1/5">
+                        <MainProductCard product={product} />
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious />
+                  <CarouselNext />
+                </Carousel>
+              </div>
+            ),
+          )}
+      </div>
+    </main>
   );
 };
 

@@ -28,7 +28,7 @@ const Login: React.FC<LoginProps> = ({ email, passWord, onLoginSuccess }) => {
     Signin();
   }, [email, passWord, onLoginSuccess]);
 
-  return <div>Login</div>;
+  return <header>Login</header>;
 };
 
 export default Login;

@@ -15,7 +15,7 @@ const LoginInfoSeller: React.FC<Props> = ({ nickname, handleLogOutButton }) => {
   const navigate = useNavigate();
 
   return (
-    <div id="LoginInfoSection" className="flex space-x-5 space-y-2">
+    <nav id="LoginInfoSection" className="flex space-x-5 space-y-2">
       <div className="my-2">
         <p>{nickname}님 (판매자)</p>
       </div>
@@ -36,7 +36,7 @@ const LoginInfoSeller: React.FC<Props> = ({ nickname, handleLogOutButton }) => {
           <button
             type="button"
             className="lg:hover:underline"
-            onClick={() => navigate('/OrderStatusPage')}
+            onClick={() => navigate('/uploadproductpage')}
           >
             물건등록
           </button>
@@ -54,7 +54,7 @@ const LoginInfoSeller: React.FC<Props> = ({ nickname, handleLogOutButton }) => {
           </button>
         </HoverCardTrigger>
       </HoverCard>
-    </div>
+    </nav>
   );
 };
 

@@ -15,7 +15,7 @@ const LoginInfoUser: React.FC<Props> = ({ nickname, handleLogOutButton }) => {
   const navigate = useNavigate();
 
   return (
-    <div id="LoginInfoSection" className="flex space-x-4">
+    <nav id="LoginInfoSection" className="flex space-x-4">
       <p>{nickname}님</p>
       <HoverCard>
         <HoverCardTrigger asChild>
@@ -54,7 +54,7 @@ const LoginInfoUser: React.FC<Props> = ({ nickname, handleLogOutButton }) => {
           </button>
         </HoverCardTrigger>
       </HoverCard>
-    </div>
+    </nav>
   );
 };
 

@@ -31,6 +31,7 @@ const router = createBrowserRouter([
         path: '/edit/:productId',
         element: <ProductEditForm />,
       },
+
       { path: '/uploadproductpage', element: <UploadProductPage /> },
       { path: '/deliverystatuspage', element: <OrderStatus /> },
       { path: '/signup', element: <SignUp /> },

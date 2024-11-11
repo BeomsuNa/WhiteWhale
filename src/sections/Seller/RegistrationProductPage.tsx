@@ -27,21 +27,21 @@ const RegistrationProductPage = () => {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: 에러발생</div>;
   const goTOUplaodPage = () => {
-    navigate('/UploadProductPage');
+    navigate('/registrationproudctpage');
   };
 
   return (
     <div className="w-4/5 mx-auto">
-      <div id="orderTitle">
+      <header id="orderTitle">
         <div className="font-bold p-20 text-white flex flex-row justify-between">
           <p className="text-lg">주문현황</p>
           <Button className="mr-5 " onClick={goTOUplaodPage}>
             물건 등록
           </Button>
         </div>
-      </div>
+      </header>
 
-      <div className="w-70% p-20 ">
+      <main className="w-70% p-20 ">
         {data?.pages?.map(page => (
           <div key={page.products[0]?.id}>
             {page.products.map(product => (
@@ -52,7 +52,7 @@ const RegistrationProductPage = () => {
 
         <div ref={ref} style={{ height: 1, backgroundColor: 'transparent' }} />
         {isFetchingNextPage && <div>Loading more...</div>}
-      </div>
+      </main>
     </div>
   );
 };

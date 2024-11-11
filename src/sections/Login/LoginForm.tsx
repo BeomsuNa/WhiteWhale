@@ -27,40 +27,46 @@ const LoginForm: React.FC<LoginFormProps> = () => {
     }
   };
   return (
-    <div className="flex justify-center m-12 h-ull">
+    <article className="flex justify-center m-12 h-ull">
       <form
         onSubmit={handleLogin}
         className="w-1/3 h-128 pl-8 pr-8 pt-8 shadow-md bg-gray-300"
       >
-        <h2 className="mb-10 text-lg font-bold"> Login</h2>
-        <div className="mb-4">
-          <Label htmlFor="email">Email</Label>
-          <Input
-            type="email"
-            id="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            className="border border-black bg-slate-200"
-          />
-        </div>
-        <Label htmlFor="passWord">PASSWORD</Label>
-        <Input
-          type="password"
-          id="passWord"
-          value={passWord}
-          onChange={e => setPassWord(e.target.value)}
-          className="border border-black bg-slate-200"
-        />
+        <header className="mb-10 text-lg font-bold"> Login</header>
+        <fieldset className="mb-4">
+          <legend className="sr-only">Login Credentials</legend>
+          <section className="mb-4">
+            <Label htmlFor="email">Email</Label>
+            <Input
+              type="email"
+              id="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              className="border border-black bg-slate-200"
+            />
+          </section>
+          <section className="mb-4">
+            <Label htmlFor="passWord">PASSWORD</Label>
+            <Input
+              type="password"
+              id="passWord"
+              value={passWord}
+              onChange={e => setPassWord(e.target.value)}
+              className="border border-black bg-slate-200"
+            />
+          </section>
+        </fieldset>
+
         <Button type="submit" className="m-6">
           로그인
         </Button>
-        <div>
+        <footer>
           <p>
             아직 아이디가 없으신가요? <a href="/SignUp">회원가입 클릭</a>
           </p>
-        </div>
+        </footer>
       </form>
-    </div>
+    </article>
   );
 };
 

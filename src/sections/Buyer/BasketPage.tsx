@@ -17,61 +17,74 @@ const BasketPage: React.FC = () => {
   };
   console.log('현재 장바구니는?', cart);
   return (
-    <div className="w-ful pl-20 pr-20">
-      <h2 className="text-2xl mb-4">장바구니</h2>
+    <article className="w-ful pl-20 pr-20">
+      <header className="text-2xl mb-4">장바구니</header>
       {cart.length === 0 ? (
         <p>장바구니가 비어 있습니다.</p>
       ) : (
-        <div className="w-100vh">
+        <article className="w-100vh">
           <ul>
             {cart.map(product => (
               <li key={product.id} className="mb-4 border-b pb-4">
                 <div className="flex items-center">
-                  <img
-                    data-src={product.imageUrl}
-                    alt={product.productName}
-                    className="w-24 h-24 object-cover mr-4"
-                  />
-                  <div className="flex-1" id="midSection">
-                    <h3 className="text-xl">{product.productName}</h3>
-                    <p>
-                      가격:{' '}
-                      {product.productPrice
-                        .toString()
-                        .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                      원
-                    </p>
-                    <div className="flex items-center mt-2">
-                      <Button
-                        onClick={() =>
-                          handleQuantityChange(product.id, product.quantity - 1)
-                        }
-                        className="size-6 px-2 mr-2"
-                      >
-                        -
-                      </Button>
-                      <span>{product.quantity}</span>
-                      <Button
-                        onClick={() =>
-                          handleQuantityChange(product.id, product.quantity + 1)
-                        }
-                        className="size-6 px-2 ml-2"
-                      >
-                        +
-                      </Button>
+                  <figure className="w-24 h-24 object-cover mr-4">
+                    <img
+                      data-src={product.imageUrl}
+                      alt={product.productName}
+                      className="w-24 h-24 object-cover mr-4"
+                    />
+                    <figcaption className="sr-only">
+                      {product.productName}
+                    </figcaption>
+                  </figure>
+                  <main>
+                    <div className="flex-1" id="midSection">
+                      <h3 className="text-xl">{product.productName}</h3>
+                      <p>
+                        가격:{' '}
+                        {product.productPrice
+                          .toString()
+                          .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                        원
+                      </p>
+                      <div className="flex items-center mt-2">
+                        <Button
+                          onClick={() =>
+                            handleQuantityChange(
+                              product.id,
+                              product.quantity - 1,
+                            )
+                          }
+                          className="size-6 px-2 mr-2"
+                        >
+                          -
+                        </Button>
+                        <span>{product.quantity}</span>
+                        <Button
+                          onClick={() =>
+                            handleQuantityChange(
+                              product.id,
+                              product.quantity + 1,
+                            )
+                          }
+                          className="size-6 px-2 ml-2"
+                        >
+                          +
+                        </Button>
+                      </div>
                     </div>
-                  </div>
-                  <Button
-                    onClick={() => removeFromCart(product.id)}
-                    className="size-10 ml-2"
-                  >
-                    삭제
-                  </Button>
+                    <Button
+                      onClick={() => removeFromCart(product.id)}
+                      className="size-10 ml-2"
+                    >
+                      삭제
+                    </Button>
+                  </main>
                 </div>
               </li>
             ))}
           </ul>
-        </div>
+        </article>
       )}
 
       <div className="w-100% h-64 grid grid-cols-3 grid-rows-2 border-t border-b my-12">
@@ -121,7 +134,7 @@ const BasketPage: React.FC = () => {
       <Button onClick={goToBuyProductPage} className="my-12">
         구매하기
       </Button>
-    </div>
+    </article>
   );
 };
 
