@@ -7,30 +7,6 @@ interface MainProductCardProps {
 }
 
 const MainProductCard: React.FC<MainProductCardProps> = ({ product }) => {
-  const imgRef = useRef<HTMLImageElement | null>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    if (!imgRef.current) {
-      console.log('imgRef is not attached to an element.');
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      entries => {
-        const [entry] = entries;
-        if (entry.isIntersecting) {
-          setIsLoaded(true);
-          console.log('감지 완료');
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 },
-    );
-    if (imgRef.current) observer.observe(imgRef.current);
-    return () => observer.disconnect();
-  }, []);
-
   if (!product) {
     alert('정보를 받아오지 못했음');
     return <div>Loading....</div>;
@@ -46,14 +22,12 @@ const MainProductCard: React.FC<MainProductCardProps> = ({ product }) => {
           className="w-full h-2/3 flex justify-center items-center "
           id="MainProductCardImgSection"
         >
-          {isLoaded && (
-            <img
-              src={product.imageUrl}
-              alt={product.productName}
-              className="w-48 h-36  border border-black border-0.5"
-              ref={imgRef}
-            />
-          )}
+          <img
+            src={product.imageUrl}
+            alt={product.productName}
+            className="w-48 h-36  border border-black border-0.5"
+          />
+
           <figcaption className="sr-only">{product.productName}</figcaption>
         </figure>
         <div className="w-full border-t border-white mb-1 group-hover:border-black group-hover:border-1" />
