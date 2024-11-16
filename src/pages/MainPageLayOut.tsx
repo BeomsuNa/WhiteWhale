@@ -13,6 +13,8 @@ import {
   CarouselNext,
 } from '@/components/ui/carousel';
 import { Label } from '@radix-ui/react-label';
+import OptimizeAndReuploadImages from '@/hooks/OptimizeAndReuploadImages';
+import { Button } from '@/components/ui/button';
 
 interface CategorizedProducts {
   [category: string]: ProductCard[];
@@ -54,6 +56,18 @@ const MainPageLayOut: React.FC<MainPageLayOutProps> = ({ sortOption }) => {
   const handleCategoryClick = (category: string) => {
     setCategory(category);
     navigate('/Products');
+  };
+
+  const hanleOptimzize = async () => {
+    try {
+      console.log('이미지 최적화 시작');
+      await OptimizeAndReuploadImages();
+      console.log('이미지 최적화 완료');
+      alert('이미지 최적화 완료');
+    } catch (arror) {
+      console.log('이미지 최적화 오류 발생', arror);
+      alert('이미지 최적화 실패');
+    }
   };
 
   return (
