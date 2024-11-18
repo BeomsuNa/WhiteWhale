@@ -8,6 +8,7 @@ import {
 } from 'firebase/firestore';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
+import UseImageUpload from '@/hooks/UseImageUpload';
 
 const ProductForm = () => {
   const [productName, setProductName] = useState('');
@@ -16,53 +17,56 @@ const ProductForm = () => {
   const [productCategory, setProductCategory] = useState('');
   const [productDescription, setProductDescription] = useState('');
   const [image, setImage] = useState<File | null>(null);
-  const [imageUrl, setImageUrl] = useState('');
+  const { uploadImage, isUploading } = UseImageUpload();
 
-  const storage = getStorage();
   const firestore = getFirestore();
   const navigate = useNavigate();
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setImage(e.target.files[0]);
+      setImage(e.target.files[0]); // 선택한 이미지를 state에 저장
     }
-  };
-
-  const handleUploadImage = async () => {
-    if (image) {
-      const storageRef = ref(storage, `Product/${image.name}`);
-      await uploadBytes(storageRef, image);
-      const url = await getDownloadURL(storageRef);
-      console.log('업로드된 이미지 경로', url);
-      setImageUrl(url);
-      return url;
-    }
-    return '';
   };
 
   const handleAddProduct = async (e: React.FormEvent) => {
     e.preventDefault();
-    const url = await handleUploadImage();
-    const productData = {
-      productName,
-      productPrice: parseFloat(productPrice),
-      productQuantity: parseInt(productQuantity, 10),
-      productDescription,
-      productCategory,
-      imageUrl: url,
-      createdAt: Timestamp.now(),
-    };
-    await addDoc(collection(firestore, 'Product'), productData);
-    // 초기화
-    setProductName('');
-    setProductPrice('');
-    setProductQuantity('');
-    setProductDescription('');
-    setProductCategory('');
-    setImage(null);
-    setImageUrl('');
-    alert('제품 등록이 완료되었습니다!');
-    navigate('/orderstatuspage');
+    try {
+      if (!image) {
+        alert('이미지를 선택해주세요.');
+        return;
+      }
+
+      // 이미지 업로드 및 최적화
+      const folderPath = 'Product';
+      const optimizedUrl = await uploadImage(image, folderPath);
+
+      // 제품 데이터 생성
+      const productData = {
+        productName,
+        productPrice: parseFloat(productPrice),
+        productQuantity: parseInt(productQuantity, 10),
+        productDescription,
+        productCategory,
+        imageUrl: optimizedUrl,
+        createdAt: Timestamp.now(),
+      };
+
+      // Firestore에 제품 등록
+      await addDoc(collection(firestore, 'Product'), productData);
+
+      // 초기화
+      setProductName('');
+      setProductPrice('');
+      setProductQuantity('');
+      setProductDescription('');
+      setProductCategory('');
+      setImage(null);
+      alert('제품 등록이 완료되었습니다!');
+      navigate('/orderstatuspage');
+    } catch (error) {
+      console.error('제품 등록 실패:', error);
+      alert('제품 등록에 실패했습니다. 다시 시도해주세요.');
+    }
   };
 
   return (
