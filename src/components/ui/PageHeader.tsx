@@ -15,14 +15,14 @@ const PageHeader = () => {
         <div id="MainHeaderSection " className="flex items-center space-x-5" />
         <button type="button">
           <div className="size-6 mx-5" id="BaksetImageFrame">
-            <img src="/logo/ClientIcon.png" alt="ClientIcon" />
+            <img src="/logo/ClientIcon.webp" alt="ClientIcon" />
           </div>
         </button>
         <button type="button">
           <div id="MainHeaderSection" />
           <div className="size-6 mx-5 relative" id="BaksetImageFrame">
             <Link to="/Basket">
-              <img src="/logo/Basket.png" alt="basketImage" />
+              <img src="/logo/Basket.webp" alt="basketImage" />
               {cart.length > 0 && (
                 <div className="absolute bottom-5 left-4 w-4 h-4 bg-red-500 rounded-full flex  justify-center text-xs text-white">
                   {cart.length}
@@ -34,7 +34,7 @@ const PageHeader = () => {
         <button type="button">
           <div id="MainHeaderSection" />
           <div className="size-6 mx-5" id="BaksetImageFrame">
-            <img src="/logo/MenuIcon.png" alt="MenuIcon" />
+            <img src="/logo/MenuIcon.webp" alt="MenuIcon" />
           </div>
         </button>
       </div>

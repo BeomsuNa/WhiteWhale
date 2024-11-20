@@ -42,9 +42,10 @@ const Header = () => {
     <div className="w-full flex justify-between p-4 bg-rgb(55, 58, 64) text-white">
       <Avatar>
         <AvatarImage
-          src="../logo/Elegant.png"
-          className="w-10 h-10"
+          src="../logo/Elegant.webp"
+          className="w-24 h-24"
           onClick={handleMainPage}
+          alt="logo"
         />
         <AvatarFallback>불러오는 중...</AvatarFallback>
       </Avatar>

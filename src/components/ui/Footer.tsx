@@ -8,7 +8,7 @@ const Footer = () => {
           <h2>GitHub :</h2>
           <Link to="https://github.com/pass98/whiteWhale">
             <img
-              src="/logo/GitHub.png"
+              src="/logo/GitHub.webp"
               alt="GitHub.png"
               className="ml-2 size-8 "
             />
@@ -24,7 +24,7 @@ const Footer = () => {
           {' '}
           <h2>Notion : </h2>
           <div className=" ml-2 size-8">
-            <img src="/logo/Notion.png" alt="notion.png" />
+            <img src="/logo/Notion.webp" alt="notion.png" />
           </div>
         </div>
       </div>
