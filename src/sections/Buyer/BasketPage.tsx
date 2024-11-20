@@ -29,7 +29,7 @@ const BasketPage: React.FC = () => {
                 <div className="flex items-center">
                   <figure className="w-24 h-24 object-cover mr-4">
                     <img
-                      data-src={product.imageUrl}
+                      src={product.imageUrl}
                       alt={product.productName}
                       className="w-24 h-24 object-cover mr-4"
                     />
