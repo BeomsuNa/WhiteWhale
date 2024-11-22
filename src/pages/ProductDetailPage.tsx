@@ -78,7 +78,7 @@ const ProductDetailPage: React.FC<MainProductCardProps> = ({
             <img
               src={product.imageUrl}
               alt={product.productName}
-              className="w-full h-full object-cover "
+              className="w-full h-full object-cover"
             />
             <figcaption className="sr-only">{product.productName}</figcaption>
           </figure>

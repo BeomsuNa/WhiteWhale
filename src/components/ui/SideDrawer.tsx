@@ -52,7 +52,11 @@ const SideDrawer = () => {
               <li key={product.id}>
                 <Link to="/Basket">
                   <div>
-                    <img src={product.imageUrl} alt={product.productName} />
+                    <img
+                      src={product.imageUrl}
+                      alt={product.productName}
+                      className="object-cover"
+                    />
                   </div>
                 </Link>
               </li>

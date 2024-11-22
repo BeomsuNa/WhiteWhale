@@ -21,7 +21,7 @@ const ProductCardLayOut: React.FC<ProductProps> = ({ product }) => {
           <img
             src={product.imageUrl}
             alt={product.productName}
-            className="w-64 h-64 p-5 "
+            className="w-64 h-64 p-5 object-cover"
           />
           <figcaption className="sr-only">{product.productName}</figcaption>
         </figure>
