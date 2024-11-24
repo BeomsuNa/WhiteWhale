@@ -1,12 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ProductCard } from '@/lib/utils';
 import { Link } from 'react-router-dom';
+import { usePreFetchProduct } from '@/hooks/PreFetch';
 
 interface MainProductCardProps {
   product: ProductCard;
 }
 
 const MainProductCard: React.FC<MainProductCardProps> = ({ product }) => {
+  const { preFetchData } = usePreFetchProduct();
+  const handleMouseEnter = async () => {
+    await preFetchData();
+  };
+
   if (!product) {
     alert('정보를 받아오지 못했음');
     return <div>Loading....</div>;
@@ -21,6 +27,7 @@ const MainProductCard: React.FC<MainProductCardProps> = ({ product }) => {
         <figure
           className="w-full h-2/3 flex justify-center items-center "
           id="MainProductCardImgSection"
+          onMouseEnter={handleMouseEnter}
         >
           <img
             src={product.imageUrl}
