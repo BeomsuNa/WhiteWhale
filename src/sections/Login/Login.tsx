@@ -17,12 +17,10 @@ const Login: React.FC<LoginProps> = ({ email, passWord, onLoginSuccess }) => {
           email,
           passWord,
         );
-        console.log('로그인 성공');
         const UserInfo = UserCredential.user;
-        console.log('현재 유저 정보는?', UserInfo);
         onLoginSuccess();
       } catch {
-        console.error('에러 발생 로그인 실패');
+        alert('에러 발생 로그인 실패');
       }
     };
     Signin();
