@@ -1,3 +1,4 @@
+import { Alert } from '@/components/ui/alert';
 import { db } from '@/config/firebase';
 import { collection, doc, getDocs, updateDoc } from 'firebase/firestore';
 import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
@@ -47,7 +48,7 @@ const OptimizeAndReuploadImages = async () => {
         imageUrl: optimizedUrl,
       });
     } catch (error) {
-      console.log('에러발생! 처리가 실패했습니다.', error);
+      throw new Error('오류 발생');
     }
   });
 

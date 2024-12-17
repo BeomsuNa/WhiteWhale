@@ -27,9 +27,8 @@ const fetchUserPayments = async () => {
   const user = auth.currentUser;
   if (user) {
     const payments = await FetchPayments(user.uid); // uid 값을 전달
-    console.log('사용자의 결제 내역:', payments);
   } else {
-    console.error('사용자가 로그인되어 있지 않습니다.');
+    throw new Error('에러 발생');
   }
 };
 

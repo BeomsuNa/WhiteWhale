@@ -26,7 +26,7 @@ export interface Product {
 
 export interface FetchProductsResult {
   products: Product[];
-  nextPage: string | null;
+  nextPage: any;
 }
 
 export interface ProductCard {

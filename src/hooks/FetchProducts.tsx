@@ -13,15 +13,14 @@ import { Product, FetchProductsResult } from '@/lib/utils';
 const PAGE_SIZE = 10;
 
 const FetchProducts = async ({
-  pageParam = 0,
+  pageParam = null,
 }): Promise<FetchProductsResult> => {
   const productsQuery = query(
     collection(db, 'Product'),
     orderBy('createdAt'),
-    limit(PAGE_SIZE),
     ...(pageParam ? [startAfter(pageParam)] : []),
+    limit(PAGE_SIZE),
   );
-
   const querySnapshot = await getDocs(productsQuery);
   const lastVisible = querySnapshot.docs[querySnapshot.docs.length - 1];
   const productPromises = querySnapshot.docs.map(
@@ -45,7 +44,7 @@ const FetchProducts = async ({
   const products = await Promise.all(productPromises);
   return {
     products,
-    nextPage: lastVisible ? lastVisible.id : null,
+    nextPage: lastVisible || null,
   };
 };
 

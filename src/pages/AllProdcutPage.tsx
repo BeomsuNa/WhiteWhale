@@ -5,12 +5,17 @@ import { useInView } from 'react-intersection-observer';
 import { useProductCategory } from '@/components/context/ProductCategoryContext';
 import { ProductCard } from '@/lib/utils';
 import { useFetchSortedProducts } from '@/hooks/FetchSortedProducts';
+import { v4 as uuidv4 } from 'uuid';
+import Skele from '@/components/ui/Skele';
 
 const AllProductPage: React.FC = () => {
   const { category, setCategory } = useProductCategory();
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useFetchInfiniteProducts();
-  const { ref, inView } = useInView();
+  const { ref, inView } = useInView({
+    threshold: 1.0,
+    triggerOnce: false,
+  });
   const [sortOption, setSortOption] = useState('productPrice');
   const {
     data: products,
@@ -19,11 +24,30 @@ const AllProductPage: React.FC = () => {
   } = useFetchSortedProducts(sortOption);
   const [sortedProducts, setSortedProducts] = useState<ProductCard[]>([]);
 
+  const callbackmessage = () => {
+    fetchNextPage();
+    console.log('5초후 페이지 생성 완료');
+  };
+
   React.useEffect(() => {
-    if (inView && hasNextPage) {
-      fetchNextPage();
+    if (inView && hasNextPage && !isFetchingNextPage) {
+      setTimeout(() => callbackmessage(), 5000);
     }
-  }, [inView, hasNextPage, fetchNextPage]);
+    console.log(
+      'ref 감지됨:',
+      inView,
+      'isFetchingNextPage 상태:',
+      isFetchingNextPage,
+    );
+
+    fetchNextPage()
+      .then(() => {
+        console.log('패치완료!');
+      })
+      .catch(err => {
+        console.error('데이터 로딩 중 오류 발생', err);
+      });
+  }, [inView, hasNextPage, fetchNextPage, isFetchingNextPage]);
 
   useEffect(() => {
     if (data) {
@@ -50,12 +74,6 @@ const AllProductPage: React.FC = () => {
   if (error) {
     return <div>에러 발생</div>;
   }
-
-  const filteredProducts = category
-    ? data?.pages?.flatMap(page =>
-        page.products.filter(product => product.productCategory === category),
-      ) || []
-    : data?.pages?.flatMap(page => page.products) || [];
 
   const handleSortByPrice = () => {
     setSortOption('productPrice');
@@ -141,8 +159,12 @@ const AllProductPage: React.FC = () => {
           {sortedProducts.map(product => (
             <MainProductCard key={product.id} product={product} />
           ))}
-          <div ref={ref} className="loading">
-            {isFetchingNextPage && <p>Loading more products...</p>}
+          <div ref={ref} className="w-full h-full">
+            {isFetchingNextPage && (
+              <div className="w-full h-full min-h-0.5">
+                <h1 className="w-full h-full">현재 로딩중입니다.</h1>
+              </div>
+            )}
           </div>
         </div>
       </div>

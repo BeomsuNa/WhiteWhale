@@ -21,7 +21,6 @@ const LoginForm: React.FC<LoginFormProps> = () => {
       await login(email, passWord);
       navigate('/'); // 로그인 성공 시 홈으로 이동
     } catch (error) {
-      console.error('로그인 실패', error);
       // 로그인 실패 시 처리할 로직 추가
       alert('로그인이 실패하였습니다. 다시 확인해주세요!');
     }

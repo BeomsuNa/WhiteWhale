@@ -20,7 +20,6 @@ const ProductForm = () => {
   const { uploadImage, isUploading } = UseImageUpload();
 
   const firestore = getFirestore();
-  const navigate = useNavigate();
 
   const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -62,10 +61,8 @@ const ProductForm = () => {
       setProductCategory('');
       setImage(null);
       alert('제품 등록이 완료되었습니다!');
-      navigate('/orderstatuspage');
     } catch (error) {
-      console.error('제품 등록 실패:', error);
-      alert('제품 등록에 실패했습니다. 다시 시도해주세요.');
+      throw new Error('오류 발생');
     }
   };
 

@@ -10,7 +10,7 @@ export const usePreFetchProduct = () => {
     try {
       await queryClient.prefetchQuery('products', FetchProducts);
     } catch (error) {
-      console.log(error);
+      throw new Error('에러 발생');
     }
   };
   return { preFetchData };

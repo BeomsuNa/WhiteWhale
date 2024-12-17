@@ -44,11 +44,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       if (user) {
         setFirebaseUser(user);
         queryClient.setQueryData('user', user);
-        console.log('로그인 성공');
       } else {
         setFirebaseUser(null);
         queryClient.setQueryData('user', null);
-        console.error('데이터를 받지 못해 로그인에 실패했습니다.');
       }
     });
     return () => unsubscribe();
