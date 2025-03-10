@@ -20,27 +20,27 @@ const DliveryState = () => {
           <h4>0</h4>
         </div>
         <div className="flex flex-row gap-2">
-          <h3>입금대기</h3>
+          <h3>결제완료</h3>
           <h4>0</h4>
         </div>
         <div className="flex flex-row gap-2">
-          <h3>입금대기</h3>
+          <h3>배송준비중</h3>
           <h4>0</h4>
         </div>
         <div className="flex flex-row gap-2">
-          <h3>입금대기</h3>
+          <h3>배송</h3>
           <h4>0</h4>
         </div>
         <div className="flex flex-row gap-2">
-          <h3>입금대기</h3>
+          <h3>배송완료</h3>
           <h4>0</h4>
         </div>
         <div className="flex flex-row gap-2">
-          <h3>입금대기</h3>
+          <h3>구매결정대기</h3>
           <h4>0</h4>
         </div>
         <div className="flex flex-row gap-2">
-          <h3>입금대기</h3>
+          <h3>반품</h3>
           <h4>0</h4>
         </div>
       </div>
