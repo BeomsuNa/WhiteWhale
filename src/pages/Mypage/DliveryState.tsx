@@ -14,7 +14,7 @@ const DliveryState = () => {
                     border-l-[48px] border-l-slate-500"
         />
       </div>
-      <div className="w-full flex flex-row items-center ">
+      <div className="w-full flex flex-row items-center justify-around ">
         <div className="flex flex-row gap-2 mr">
           <h3>입금대기</h3>
           <h4>0</h4>
