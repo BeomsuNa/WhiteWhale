@@ -9,7 +9,7 @@ function MyPage() {
         <DliveryState />
       </div>
       <div className="w-full h-[1024px]  flex flex-row border border-black">
-        <div className="w-[40%]  border border-black">
+        <div className="w-[40%] h-full border border-black flex items-center">
           <MenuSide />
         </div>
         <div>
