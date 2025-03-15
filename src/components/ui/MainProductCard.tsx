@@ -1,15 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ProductCard } from '@/lib/utils';
+import { Product } from '@/lib/utils';
 import { Link } from 'react-router-dom';
-import { usePreFetchProduct } from '@/hooks/PreFetch';
 
 interface MainProductCardProps {
-  product: ProductCard;
+  product: Product;
 }
 
 const MainProductCard: React.FC<MainProductCardProps> = ({ product }) => {
-  const { preFetchData } = usePreFetchProduct();
-
   if (!product) {
     alert('정보를 받아오지 못했음');
     return <div>Loading....</div>;
@@ -26,7 +23,7 @@ const MainProductCard: React.FC<MainProductCardProps> = ({ product }) => {
           id="MainProductCardImgSection"
         >
           <img
-            src={product.imageUrl}
+            src={product.imageLink}
             alt={product.productName}
             className="w-48 h-36  border border-black border-0.5"
           />
@@ -49,10 +46,7 @@ const MainProductCard: React.FC<MainProductCardProps> = ({ product }) => {
             id="mainCardPrice"
             className="text-white font-bold group-hover:text-black"
           >
-            {product.productPrice
-              .toString()
-              .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-            원
+            {product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원
           </div>
         </div>
       </Link>

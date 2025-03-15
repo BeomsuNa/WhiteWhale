@@ -12,21 +12,16 @@ export interface User {
 }
 
 export interface Product {
-  createdAt: Timestamp;
   id: string;
-  productCategory: string;
-  productDescription: string;
   productName: string;
-  productPrice: number;
-  productQuantity: number;
-  sellerId: number;
-  updatedAt: Timestamp;
-  imageUrl: string;
+  description: string;
+  imageLink: string;
+  cartegory_id: number;
+  price: number;
 }
 
-export interface FetchProductsResult {
+export interface CarouselProps {
   products: Product[];
-  nextPage: any;
 }
 
 export interface ProductCard {
@@ -39,6 +34,10 @@ export interface ProductCard {
   updatedAt?: Timestamp;
 }
 
+export interface FetchProductsResult {
+  products: Product[];
+  nextPage: any;
+}
 export interface CartProduct extends ProductCard {
   quantity: number;
 }

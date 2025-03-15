@@ -27,5 +27,9 @@
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "src/Dummys/UseFetchDatadummy.tsx",
+    "src/Dummys/MainPageLayOutDummy.tsx"
+  ]
 }

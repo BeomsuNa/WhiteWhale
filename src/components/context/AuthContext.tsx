@@ -11,7 +11,7 @@ import {
   signInWithEmailAndPassword,
   User as FirebaseUser,
 } from 'firebase/auth';
-import { useQuery, useQueryClient } from 'react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import fetchUser from '@/hooks/FetchUser';
 
 export interface User {
@@ -19,7 +19,6 @@ export interface User {
   email: string | null;
   displayName: string | null;
   photoURL: string | null;
-  // 추가 필드가 필요한 경우 여기에 정의합니다.
 }
 
 interface AuthContextType {
@@ -30,10 +29,8 @@ interface AuthContextType {
   firebaseUser: FirebaseUser | null;
 }
 
-// 초기 값 설정
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// AuthProvider 컴포넌트
 export function AuthProvider({ children }: { children: ReactNode }) {
   const queryClient = useQueryClient();
   const auth = getAuth();
@@ -43,10 +40,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const unsubscribe = onAuthStateChanged(auth, user => {
       if (user) {
         setFirebaseUser(user);
-        queryClient.setQueryData('user', user);
+        queryClient.setQueryData(['user'], user); // ✅ v5 방식
       } else {
         setFirebaseUser(null);
-        queryClient.setQueryData('user', null);
+        queryClient.setQueryData(['user'], user); // ✅ v5 방식
       }
     });
     return () => unsubscribe();
@@ -54,12 +51,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const login = async (email: string, password: string) => {
     await signInWithEmailAndPassword(auth, email, password);
-    queryClient.invalidateQueries('user');
+    queryClient.invalidateQueries({ queryKey: ['user'] }); // ✅ v5 방식
   };
 
   const logout = async () => {
     await auth.signOut();
-    queryClient.invalidateQueries('user');
+    queryClient.invalidateQueries({ queryKey: ['user'] }); // ✅ v5 방식
   };
 
   return (
@@ -77,7 +74,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   );
 }
 
-// AuthContext를 사용하는 훅
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
@@ -90,11 +86,11 @@ export const useAuth = () => {
     data: user,
     isLoading: userLoading,
     error,
-  } = useQuery(
-    ['userData', firebaseUser?.uid],
-    () => fetchUser(firebaseUser as FirebaseUser), // firebaseUser 객체를 인수로 전달
-    { enabled: !!firebaseUser },
-  );
+  } = useQuery({
+    queryKey: ['userData', firebaseUser?.uid], // ✅ v5 방식
+    queryFn: () => fetchUser(firebaseUser as FirebaseUser),
+    enabled: !!firebaseUser,
+  });
 
   return {
     isLoggedIn: !!firebaseUser,

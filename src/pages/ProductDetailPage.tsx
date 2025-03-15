@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import React, { useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { ProductCard } from '@/lib/utils';
-import { useFetchProductCardData } from '@/hooks/UseFetchData';
+
 import MainProductCard from '@/components/ui/MainProductCard';
 import {
   Carousel,
@@ -13,6 +13,7 @@ import {
   CarouselApi,
 } from '@/components/ui/carousel';
 import { useCart } from '@/components/context/CartContext';
+import useProductsData from '@/hooks/useProductsData';
 
 interface MainProductCardProps {
   sortOption: string;
@@ -27,7 +28,7 @@ const ProductDetailPage: React.FC<MainProductCardProps> = ({
   const navigate = useNavigate();
   const { product } = location.state || {};
   const { productId } = useParams<{ productId: string }>();
-  const { data: products } = useFetchProductCardData(sortOption);
+  const { data: products } = useProductsData();
   const { addToCart } = useCart();
   const [orderProductCount, setOrderProductCount] = useState<number>(1);
   const [finishiCart, setFinishiCart] = useState(false);
@@ -50,12 +51,6 @@ const ProductDetailPage: React.FC<MainProductCardProps> = ({
   if (!currentProduct) {
     return <div>상품을 찾을 수 없습니다.</div>;
   }
-
-  const sameCategoryProducts = products?.filter(
-    sameproduct =>
-      sameproduct.productCategory === currentProduct.productCategory &&
-      sameproduct.id !== currentProduct.id,
-  );
 
   const handleAddToCart = () => {
     if (orderProductCount === 0) {
@@ -147,29 +142,7 @@ const ProductDetailPage: React.FC<MainProductCardProps> = ({
           </main>
         </div>
       </div>
-      <footer className=" justify-center">
-        같은 카테고리의 다른 상품들
-        <Carousel
-          opts={{ loop: true }}
-          plugins={[]}
-          orientation="horizontal"
-          setApi={() => {}}
-          className="flex justify-center items-center"
-        >
-          <CarouselContent className="flex ">
-            {sameCategoryProducts?.map(sameproduct => (
-              <CarouselItem
-                key={sameproduct.id}
-                className="flex justify-center items-center basis-1/4  mx-2"
-              >
-                <MainProductCard key={product.id} product={sameproduct} />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
-      </footer>
+      <footer className=" justify-center">같은 카테고리의 다른 상품들</footer>
     </article>
   );
 };

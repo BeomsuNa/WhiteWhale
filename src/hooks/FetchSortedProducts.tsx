@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import {
   collection,
   getDocs,
@@ -33,7 +33,8 @@ const fetchSortedProducts = async (
 };
 
 export const useFetchSortedProducts = (sortField: string) => {
-  return useQuery(['sortedProducts', sortField], () =>
-    fetchSortedProducts(sortField),
-  );
+  return useQuery({
+    queryKey: ['sortedProducts', sortField],
+    queryFn: () => fetchSortedProducts(sortField),
+  });
 };

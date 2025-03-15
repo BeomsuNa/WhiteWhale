@@ -1,7 +1,7 @@
 import { useQuery, useInfiniteQuery } from 'react-query';
 import { FetchProducts } from './FetchProducts';
 import { FetchProductsResult, ProductCard } from '@/lib/utils';
-import { fetchProductCardData } from './FetchProductCardData';
+import { fetchProductCardData } from '../hooks/FetchProductCardData';
 
 export const useFetchInfiniteProducts = () => {
   return useInfiniteQuery<FetchProductsResult>('products', FetchProducts, {

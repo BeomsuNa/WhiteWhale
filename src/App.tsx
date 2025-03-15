@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import './App.css';
 import Main from './pages/BackGroundPage';
 import { AuthProvider } from './components/context/AuthContext';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Header from './components/ui/TopBar';
 import { ProductCategoryProvider } from './components/context/ProductCategoryContext';
 import PageHeader from './components/ui/PageHeader';

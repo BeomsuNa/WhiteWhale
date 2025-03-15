@@ -6,7 +6,7 @@ import { addDoc, collection } from 'firebase/firestore';
 import { db } from '@/config/firebase';
 import Geocoder from '@/Order/Geocoder';
 import { useState } from 'react';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import { getAuth } from 'firebase/auth';
 
 interface PaymentResponse {
@@ -25,7 +25,7 @@ const BuyProductPage = () => {
   const { cart, updateCartQuantity, clearCart } = useCart();
   const auth = getAuth();
 
-  const { data: addressData } = useQuery('addressData');
+  const { data: addressData } = useQuery({ queryKey: ['addressData'] });
 
   const handleQuantityChange = (productId: string, quantity: number) => {
     if (quantity < 1) return;

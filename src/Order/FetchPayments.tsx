@@ -1,7 +1,7 @@
 import { db } from '@/config/firebase';
 import { getAuth } from 'firebase/auth';
 import { collection, getDocs, query, where } from 'firebase/firestore';
-import { useQuery, UseQueryResult } from 'react-query';
+import { useQuery, UseQueryResult } from '@tanstack/react-query';
 
 interface Payment {
   productImg: string;
@@ -35,5 +35,9 @@ const fetchUserPayments = async () => {
 export const usePayments = (
   userId: string,
 ): UseQueryResult<Payment[], unknown> => {
-  return useQuery(['paymetnrs', userId], () => FetchPayments(userId));
+  return useQuery({
+    queryKey: ['payments', userId], // ✅ queryKey는 배열로 정의
+    queryFn: () => FetchPayments(userId), // ✅ queryFn은 데이터 가져오는 함수
+    enabled: !!userId, // ✅ userId가 있을 때만 실행
+  });
 };

@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import React, { useState, useEffect, useRef } from 'react';
-import { useQueryClient } from 'react-query';
+import { useQueryClient } from '@tanstack/react-query';
 
 declare global {
   interface Window {
@@ -70,7 +70,7 @@ const Geocoder: React.FC = () => {
         setPostAddress(data.zonecode);
         setMainAddress(data.address);
 
-        queryClient.setQueriesData('addressData', {
+        queryClient.setQueryData(['addressData'], {
           zonecode: data.zonecode,
           address: data.address,
           detailAddress: detailAddressRef.current?.value || '',
