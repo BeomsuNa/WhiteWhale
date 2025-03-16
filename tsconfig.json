@@ -9,8 +9,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "types": ["@testing-library/jest-dom"],
-    "jsx": "react-jsx",
-
+    "jsx": "react-jsx"
   },
   "exclude": ["src/Dummys"],
   "files": [],

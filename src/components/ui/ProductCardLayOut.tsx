@@ -19,7 +19,7 @@ const ProductCardLayOut: React.FC<ProductProps> = ({ product }) => {
       <article className="w-full h-auto grid grid-cols-3 gap-5 border border-black mb-5 items-center">
         <figure>
           <img
-            src={product.imageUrl}
+            src={product.imageLink}
             alt={product.productName}
             className="w-64 h-64 p-5 object-cover"
           />
@@ -27,10 +27,10 @@ const ProductCardLayOut: React.FC<ProductProps> = ({ product }) => {
         </figure>
         <header className="flex flex-col items-start ml-24">
           <div>제목 : {product.productName}</div>
-          <div>설명 :{product.productDescription}</div>
-          <div>가격 : {product.productPrice}</div>
+          <div>설명 :{product.description}</div>
+          <div>가격 : {product.price}</div>
         </header>
-        <div>수량 : {product.productQuantity}</div>
+        {/* <div>수량 : {product.quantity}</div> */}
       </article>
     </Link>
   );

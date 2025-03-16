@@ -11,7 +11,7 @@ import {
   CarouselNext,
   CarouselPrevious,
   CarouselApi,
-} from '@/components/ui/carousel';
+} from '@/components/ui/Carousel/carousel';
 import { useCart } from '@/components/context/CartContext';
 import useProductsData from '@/hooks/useProductsData';
 

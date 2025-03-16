@@ -9,11 +9,11 @@ import {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
-} from '@/components/ui/carousel';
+} from '@/components/ui/Carousel/carousel';
 import { Label } from '@radix-ui/react-label';
 import Skeleton from '../components/ui/Skele';
 import useProductsData from '@/hooks/useProductsData';
-import ProductCarousel from '@/components/ui/ProductCarousel';
+import ProductCarousel from '@/components/ui/Carousel/ProductCarousel';
 
 const MainPageLayOut = () => {
   const { setCategory } = useProductCategory();
@@ -61,8 +61,6 @@ const MainPageLayOut = () => {
   return (
     <main>
       <div className="main-page-layout p-20 ">
-        <Label className="flex text-lg font-bold mb-5">신상품</Label>
-        <ProductCarousel />
         <button
           className="absolute right-64 text-sm cursor-pointer hover:underline hover:text-white"
           type="button"
@@ -70,6 +68,8 @@ const MainPageLayOut = () => {
           전체보기
         </button>
         <hr className="border-t border-gray-300 m-5" />
+        <Label className="flex text-lg font-bold mb-5">신상품</Label>
+        <ProductCarousel />
       </div>
     </main>
   );
