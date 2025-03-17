@@ -3,10 +3,10 @@ import { doc, setDoc } from 'firebase/firestore';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { db } from '@/config/firebase';
-import { Label } from '@/components/ui/label';
+import { Label } from '@/components/ui/radixUi/label';
 import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
+import { Button } from '@/components/ui/radixUi/button';
+import { Checkbox } from '@/components/ui/radixUi/checkbox';
 
 interface UserInfo {
   email: string;

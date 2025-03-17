@@ -1,7 +1,7 @@
 import * as PortOne from '@portone/browser-sdk/v2';
 import { useCart } from '@/components/context/CartContext';
 import { ProductCard } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/radixUi/button';
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '@/config/firebase';
 import Geocoder from '@/Order/Geocoder';

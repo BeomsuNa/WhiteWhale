@@ -1,5 +1,5 @@
 import { useCart } from '@/components/context/CartContext';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/radixUi/button';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 

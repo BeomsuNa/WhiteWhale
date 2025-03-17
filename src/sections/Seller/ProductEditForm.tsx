@@ -8,7 +8,7 @@ import {
   deleteDoc,
 } from 'firebase/firestore';
 import { db } from '@/config/firebase';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/radixUi/button';
 import { useNavigate, useParams } from 'react-router-dom';
 
 interface ProductEditFormProps {

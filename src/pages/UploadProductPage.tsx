@@ -6,7 +6,7 @@ import {
   Timestamp,
   getFirestore,
 } from 'firebase/firestore';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/radixUi/button';
 import { useNavigate } from 'react-router-dom';
 import UseImageUpload from '@/hooks/UseImageUpload';
 

@@ -13,7 +13,10 @@ const MainProductCard: React.FC<MainProductCardProps> = ({ product }) => {
   }
 
   return (
-    <article className="w-72 h-72 rounded-xl  m-3" id="cardBorderSection">
+    <article
+      className=" rounded-xl m-3 sm:w-48 md:w-56 lg:w-72 min-w-[180px] aspect-[3/4]"
+      id="cardBorderSection"
+    >
       <Link to={`/buy/${product.id}`} state={{ product }}>
         <figure
           className="w-full h-2/3 flex justify-center item-start "
@@ -22,7 +25,7 @@ const MainProductCard: React.FC<MainProductCardProps> = ({ product }) => {
           <img
             src={product.imageLink}
             alt={product.productName}
-            className="w-full h-full  hover:opacity-30 hover:bg-black"
+            className="w-full h-auto object-cover  hover:opacity-30 hover:bg-black"
           />
 
           <figcaption className="sr-only">{product.productName}</figcaption>

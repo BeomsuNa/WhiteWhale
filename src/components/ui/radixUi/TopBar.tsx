@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 import LoginInfoGuest from '@/sections/Login/LoginInfoGuest';
 import LoginInfoSeller from '@/sections/Login/LoginInfoSeller';
 import LoginInfoUser from '@/sections/Login/LoginInfoUser';

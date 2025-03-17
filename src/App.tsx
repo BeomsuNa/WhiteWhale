@@ -3,7 +3,7 @@ import './App.css';
 import Main from './pages/BackGroundPage';
 import { AuthProvider } from './components/context/AuthContext';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import Header from './components/ui/TopBar';
+import Header from './components/ui/radixUi/TopBar';
 import { ProductCategoryProvider } from './components/context/ProductCategoryContext';
 import PageHeader from './components/ui/PageHeader';
 import { CartProvider } from './components/context/CartContext';

@@ -15,7 +15,10 @@ const LoginInfoSeller: React.FC<Props> = ({ nickname, handleLogOutButton }) => {
   const navigate = useNavigate();
 
   return (
-    <nav id="LoginInfoSection" className="flex space-x-5 space-y-2">
+    <nav
+      id="LoginInfoSection"
+      className="flex items-center space-x-5 space-y-2"
+    >
       <div className="my-2">
         <p>{nickname}님 (판매자)</p>
       </div>
