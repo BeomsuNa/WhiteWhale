@@ -18,6 +18,7 @@ export interface Product {
   imageLink: string;
   cartegory_id: number;
   price: number;
+  created_at: Date;
 }
 
 export interface CarouselProps {

@@ -1,15 +1,29 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { Label } from '@radix-ui/react-label';
+import { Button } from './radixUi/button';
 
 const PageHeader = () => {
   const { cart } = useCart();
+  const navigate = useNavigate();
+  const handleKeyBoard = () => {
+    navigate('/Products', { state: { categoryId: 1 } });
+  };
+
+  const handleKeyCap = () => {
+    navigate('/Products', { state: { categoryId: 2 } });
+  };
+
+  const handleAccesorry = () => {
+    navigate('/Products', { state: { categoryId: 3 } });
+  };
 
   return (
     <header>
       <Label className="font-bold text-white text-2xl">
         <Link to="/">WhiteWhale</Link>
       </Label>
+
       <div className=" flex h-24 items-center m-5 border-b border-t  ">
         <div className="h-24 flex-1 " />
         <div id="MainHeaderSection " className="flex items-center space-x-5" />
@@ -45,6 +59,11 @@ const PageHeader = () => {
             <img src="/logo/MenuIcon.webp" alt="MenuIcon" className="h-6 w-6" />
           </div>
         </button>
+      </div>
+      <div className="w-full flex flex-row justify-center items-center gap-12 my-12">
+        <Button onClick={handleKeyBoard}>커스텀키보드</Button>
+        <Button onClick={handleKeyCap}>키캡</Button>
+        <Button onClick={handleAccesorry}>액세서리</Button>
       </div>
     </header>
   );
