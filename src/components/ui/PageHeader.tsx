@@ -6,18 +6,11 @@ import { Button } from './radixUi/button';
 const PageHeader = () => {
   const { cart } = useCart();
   const navigate = useNavigate();
-  const handleKeyBoard = () => {
-    navigate('/Products', { state: { categoryId: 1 } });
-  };
+  const handleKeyboard = () => navigate('/products?category=1');
 
-  const handleKeyCap = () => {
-    navigate('/Products', { state: { categoryId: 2 } });
-  };
+  const handleKeyCap = () => navigate('/products?category=2');
 
-  const handleAccesorry = () => {
-    navigate('/Products', { state: { categoryId: 3 } });
-  };
-
+  const handleKeyAccesory = () => navigate('/products?category=3');
   return (
     <header>
       <Label className="font-bold text-white text-2xl">
@@ -61,9 +54,9 @@ const PageHeader = () => {
         </button>
       </div>
       <div className="w-full flex flex-row justify-center items-center gap-12 my-12">
-        <Button onClick={handleKeyBoard}>커스텀키보드</Button>
+        <Button onClick={handleKeyboard}>커스텀키보드</Button>
         <Button onClick={handleKeyCap}>키캡</Button>
-        <Button onClick={handleAccesorry}>액세서리</Button>
+        <Button onClick={handleKey}>액세서리</Button>
       </div>
     </header>
   );
