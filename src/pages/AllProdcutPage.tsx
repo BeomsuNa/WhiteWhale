@@ -4,7 +4,6 @@ import MainProductCard from '@/components/ui/MainProductCard';
 import { useInView } from 'react-intersection-observer';
 import { Product, ProductCard } from '@/lib/utils';
 import { v4 as uuidv4 } from 'uuid';
-import Skele from '@/components/ui/Skele';
 import useProductsData from '@/hooks/useProductsData';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import SortSelector from '@/components/ui/SortSelector';

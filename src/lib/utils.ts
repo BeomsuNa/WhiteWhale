@@ -19,6 +19,7 @@ export interface Product {
   cartegory_id: number;
   price: number;
   created_at: Date;
+  stock: number;
 }
 
 export interface CarouselProps {

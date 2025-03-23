@@ -24,9 +24,7 @@ const ProductDetailPage: React.FC<MainProductCardProps> = ({
   sortOption,
   onClose,
 }) => {
-  const location = useLocation();
   const navigate = useNavigate();
-  const { product } = location.state || {};
   const { productId } = useParams<{ productId: string }>();
   const { data: products } = useProductsData();
   // const { addToCart } = useCart();
@@ -42,12 +40,11 @@ const ProductDetailPage: React.FC<MainProductCardProps> = ({
     setOrderProductCount(prevCount => (prevCount > 0 ? prevCount - 1 : 0));
   };
 
-  if (!product) {
-    return <div>정보를 받아오지 못했습니다.</div>;
-  }
   const currentProduct = products?.find(
-    curproduct => curproduct.id === productId,
+    c => Number(c.id) === Number(productId),
   );
+  console.log('받은 curretn:', currentProduct);
+  console.log('받은 product:', products);
   if (!currentProduct) {
     return <div>상품을 찾을 수 없습니다.</div>;
   }
@@ -71,29 +68,31 @@ const ProductDetailPage: React.FC<MainProductCardProps> = ({
         <div>
           <figure className="w-96 h-96 border mr-10">
             <img
-              src={product.imageUrl}
-              alt={product.productName}
+              src={currentProduct.imageLink}
+              alt={currentProduct.productName}
               className="w-full h-full object-cover"
             />
-            <figcaption className="sr-only">{product.productName}</figcaption>
+            <figcaption className="sr-only">
+              {currentProduct.productName}
+            </figcaption>
           </figure>
         </div>
         <div className="h-full  flex flex-col items-center justify-center">
           <header className="w-full divide-y divide-y-0.5 divide-slate-600">
             <h1 className="text-3xl  w-full text-left my-5">
-              {product.productName}
+              {currentProduct.productName}
             </h1>
             <div className="w-full">
               <h1 className="text-2xl font-bold w-full text-left my-5">
                 남은 수량 :{' '}
-                {product.productPrice
+                {currentProduct.price
                   .toString()
                   .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
               </h1>
             </div>
             <div className="w-full">
               <h1 className="text-xl  w-full text-left my-5">
-                남은 수량 : {product.productQuantity}
+                남은 수량 : {currentProduct.stock}
               </h1>
             </div>
 
@@ -121,7 +120,7 @@ const ProductDetailPage: React.FC<MainProductCardProps> = ({
             <div className="w-full">
               <h1 className="text-2xl font-bold mt-5 text-left">
                 총 상품 가격 :{' '}
-                {(product.productPrice * orderProductCount)
+                {(currentProduct.price * orderProductCount)
                   .toString()
                   .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                 원
