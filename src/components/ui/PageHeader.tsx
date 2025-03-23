@@ -7,9 +7,7 @@ const PageHeader = () => {
   const { cart } = useCart();
   const navigate = useNavigate();
   const handleKeyboard = () => navigate('/products?category=1');
-
   const handleKeyCap = () => navigate('/products?category=2');
-
   const handleKeyAccesory = () => navigate('/products?category=3');
   return (
     <header>
@@ -56,7 +54,7 @@ const PageHeader = () => {
       <div className="w-full flex flex-row justify-center items-center gap-12 my-12">
         <Button onClick={handleKeyboard}>커스텀키보드</Button>
         <Button onClick={handleKeyCap}>키캡</Button>
-        <Button onClick={handleKey}>액세서리</Button>
+        <Button onClick={handleKeyAccesory}>액세서리</Button>
       </div>
     </header>
   );

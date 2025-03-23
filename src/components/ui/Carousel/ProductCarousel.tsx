@@ -79,7 +79,7 @@ const ProductCarousel = () => {
               <CarouselContent className="flex gap-4  ">
                 {categoryProducts.map(product => (
                   <CarouselItem
-                    key={product.id}
+                    key={uuidv4()}
                     className="flex-shrink-0 basis-1/5 sm:basis-1 md:basis-1/3 lg:basis-1/5"
                   >
                     <MainProductCard product={product} />

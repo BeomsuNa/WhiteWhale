@@ -29,10 +29,10 @@ const ProductDetailPage: React.FC<MainProductCardProps> = ({
   const { product } = location.state || {};
   const { productId } = useParams<{ productId: string }>();
   const { data: products } = useProductsData();
-  const { addToCart } = useCart();
+  // const { addToCart } = useCart();
   const [orderProductCount, setOrderProductCount] = useState<number>(1);
-  const [finishiCart, setFinishiCart] = useState(false);
-  const [emblaApi, setEmblaApi] = useState<CarouselApi | null>(null);
+  // const [finishiCart, setFinishiCart] = useState(false);
+  // const [emblaApi, setEmblaApi] = useState<CarouselApi | null>(null);
 
   const incrementCount = () => {
     setOrderProductCount(prevCount => prevCount + 1);
@@ -52,15 +52,15 @@ const ProductDetailPage: React.FC<MainProductCardProps> = ({
     return <div>상품을 찾을 수 없습니다.</div>;
   }
 
-  const handleAddToCart = () => {
-    if (orderProductCount === 0) {
-      alert('개수를 선택해주세요!');
-    } else {
-      addToCart({ ...product, quantity: orderProductCount });
-      alert('선택하신 상품을 장바구니에 담았습니다!');
-      setFinishiCart(true);
-    }
-  };
+  // const handleAddToCart = () => {
+  //   if (orderProductCount === 0) {
+  //     alert('개수를 선택해주세요!');
+  //   } else {
+  //     addToCart({ ...product, quantity: orderProductCount });
+  //     alert('선택하신 상품을 장바구니에 담았습니다!');
+  //     setFinishiCart(true);
+  //   }
+  // };
 
   const goToBaseketPagae = () => {
     navigate('/basket');
@@ -130,7 +130,7 @@ const ProductDetailPage: React.FC<MainProductCardProps> = ({
           </header>
           <main className="my-5 space-x-10">
             <Button className="px-10">구매하기</Button>
-            {finishiCart === true ? (
+            {/* {finishiCart === true ? (
               <Button className="px-7" onClick={goToBaseketPagae}>
                 장바구니보기
               </Button>
@@ -138,7 +138,7 @@ const ProductDetailPage: React.FC<MainProductCardProps> = ({
               <Button className="px-7" onClick={handleAddToCart}>
                 장바구니담기
               </Button>
-            )}
+            )} */}
           </main>
         </div>
       </div>

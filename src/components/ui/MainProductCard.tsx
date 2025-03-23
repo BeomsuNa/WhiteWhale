@@ -7,6 +7,7 @@ interface MainProductCardProps {
 }
 
 const MainProductCard: React.FC<MainProductCardProps> = ({ product }) => {
+  console.log('페이지 로딩 완료');
   if (!product) {
     alert('정보를 받아오지 못했음');
     return <div>Loading....</div>;

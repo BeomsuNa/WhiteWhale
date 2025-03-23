@@ -11,9 +11,7 @@ import SortSelector from '@/components/ui/SortSelector';
 
 const AllProductPage = () => {
   const [searchParams] = useSearchParams();
-  const location = useLocation();
-  const categoryState = location.state?.categoryId;
-  const [categoryId, setCategoryId] = useState(categoryState);
+  const categoryId = Number(searchParams.get('category')) || null;
   const { data, isLoading, error } = useProductsData();
   const [sortedProducts, setSortedProducts] = useState<Product[]>([]);
   const [sortOption, setSortOption] = useState('ascPrice');
@@ -24,15 +22,13 @@ const AllProductPage = () => {
 
   useEffect(() => {
     if (data) {
-      setCategoryId(categoryState);
       const allProducts = data;
       const filteredProducts = categoryId
         ? allProducts.filter(product => product.cartegory_id === categoryId)
         : allProducts;
       setSortedProducts(filteredProducts);
-      setCategoryId(categoryId);
     }
-  }, [categoryState, categoryId, data]);
+  }, [categoryId, data]);
 
   if (isLoading) {
     return <div>Loadinhg...</div>;
@@ -40,16 +36,6 @@ const AllProductPage = () => {
   if (error) {
     return <div>에러 발생</div>;
   }
-
-  const selectKeyBoard = () => {
-    setCategoryId(1);
-  };
-  const selectKeyCap = () => {
-    setCategoryId(2);
-  };
-  const selectAccerssory = () => {
-    setCategoryId(3);
-  };
 
   return (
     <main>

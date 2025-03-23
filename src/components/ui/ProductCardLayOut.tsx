@@ -10,7 +10,6 @@ const ProductCardLayOut: React.FC<ProductProps> = ({ product }) => {
   const navigate = useNavigate();
 
   const handleEditClick = () => {
-    console.log('이동');
     navigate(`/edit/${product.id}`);
   };
 
