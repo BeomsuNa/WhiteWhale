@@ -7,8 +7,11 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export interface User {
-  nickname: string;
-  isSeller: boolean;
+  id: number;
+  username: string;
+  email: string;
+  password: string;
+  role: 'customer' | 'seller' | 'admin';
 }
 
 export interface Product {

@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/radixUi/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/radixUi/label';
 import { useAuth } from '@/components/context/AuthContext';
+import { useLogin } from '@/hooks/useAuth';
 
 interface LoginFormProps {
   onLogin: (email: string, passWord: string) => void;
@@ -13,18 +14,27 @@ const LoginForm: React.FC<LoginFormProps> = () => {
   const [email, setEmail] = useState<string>('');
   const [passWord, setPassWord] = useState<string>('');
   const navigate = useNavigate();
-  const { login } = useAuth();
+  // const { login } = useAuth();
 
-  const handleLogin = async (event: React.FormEvent) => {
-    event.preventDefault();
-    try {
-      await login(email, passWord);
-      navigate('/'); // 로그인 성공 시 홈으로 이동
-    } catch (error) {
-      // 로그인 실패 시 처리할 로직 추가
-      alert('로그인이 실패하였습니다. 다시 확인해주세요!');
+  const { loginUser } = useLogin();
+  const handleLogin = () => {
+    const success = loginUser(email, passWord);
+    if (success) {
+      navigate('/');
     }
   };
+
+  // const handleLogin = async (event: React.FormEvent) => {
+  //   event.preventDefault();
+  //   try {
+  //     await login(email, passWord);
+  //     navigate('/'); // 로그인 성공 시 홈으로 이동
+  //   } catch (error) {
+  //     // 로그인 실패 시 처리할 로직 추가
+  //     alert('로그인이 실패하였습니다. 다시 확인해주세요!');
+  //   }
+  // };
+
   return (
     <article className="flex justify-center m-12 h-ull">
       <form
