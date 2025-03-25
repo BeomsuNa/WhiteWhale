@@ -7,10 +7,10 @@ const port = process.env.PORT || 3006;
 
 app.use(
   cors({
-    origin: 'http://localhost:5173', // 🔥 '*' = 모든 요청 허용
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // ✅ 허용할 메서드 지정
-    allowedHeaders: ['Content-Type', 'Authorization'], // ✅ 허용할 헤더 지정
-    credentials: true, // ✅ 쿠키 포함 요청 허용
+    origin: 'http://localhost:5173',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
   }),
 );
 
