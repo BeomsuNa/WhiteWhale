@@ -35,6 +35,7 @@
     "express": "^4.21.2",
     "firebase": "^10.12.2",
     "framer-motion": "^11.3.2",
+    "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.396.0",
     "mysql2": "^3.13.0",
     "react": "^18.3.1",

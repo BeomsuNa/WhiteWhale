@@ -44,8 +44,3 @@ app.get('/products', async (req, res) => {
     res.status(500).json({ error: '서버오류' });
   }
 });
-
-app.listen(port, () => {
-  console.log(`서버실행 완료 :${port}`);
-  console.log('안될경우 다시 확인')
-});
