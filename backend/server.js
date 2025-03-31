@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import pool from './db.mjs';
+import authRoute from './routes/auth.mjs';
 
 const app = express();
 const port = process.env.PORT || 3006;
@@ -17,6 +18,8 @@ app.use(
 // ✅ Preflight 요청 허용
 app.options('*', cors());
 app.use(express.json()); // ✅ JSON 요청을 처리할 수 있도록 설정
+
+app.use('/api', authRoute);
 
 app.get('/', (req, res) => {
   res.json({

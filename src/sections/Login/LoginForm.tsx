@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/radixUi/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/radixUi/label';
-import { useAuth } from '@/components/context/AuthContext';
 import { useLogin } from '@/hooks/useAuth';
 
 interface LoginFormProps {
@@ -14,11 +13,10 @@ const LoginForm: React.FC<LoginFormProps> = () => {
   const [email, setEmail] = useState<string>('');
   const [passWord, setPassWord] = useState<string>('');
   const navigate = useNavigate();
-  // const { login } = useAuth();
-
   const { loginUser } = useLogin();
-  const handleLogin = () => {
-    const success = loginUser(email, passWord);
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const success = await loginUser(email, passWord);
     if (success) {
       navigate('/');
     }
