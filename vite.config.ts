@@ -15,4 +15,14 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['src/dummy/*'], // ✅ Vite가 이 폴더를 최적화 대상에서 제외
   },
+
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3006',
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+  },
 });

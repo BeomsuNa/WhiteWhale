@@ -1,12 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
-import { useAuth } from '../../context/AuthContext';
 import LoginInfoGuest from '@/sections/Login/LoginInfoGuest';
 import LoginInfoSeller from '@/sections/Login/LoginInfoSeller';
 import LoginInfoUser from '@/sections/Login/LoginInfoUser';
+import UserAuthStore from '@/components/store/UserAuthStore';
 
 const Header = () => {
-  const { user, logout } = useAuth();
+  const user = UserAuthStore(state => state.user);
+  const logout = UserAuthStore(state => state.logout);
   const navigate = useNavigate();
 
   const handleLogOutButton = () => {
@@ -22,20 +23,21 @@ const Header = () => {
     if (!user) {
       return <LoginInfoGuest />;
     }
-    if (user.isSeller) {
+    if (user.role === 'seller') {
       return (
         <LoginInfoSeller
-          nickname={user.nickname}
+          nickname={user.name}
           handleLogOutButton={handleLogOutButton}
         />
       );
     }
-    return (
-      <LoginInfoUser
-        nickname={user.nickname}
-        handleLogOutButton={handleLogOutButton}
-      />
-    );
+    if (user.role === 'customer')
+      return (
+        <LoginInfoUser
+          nickname={user.name}
+          handleLogOutButton={handleLogOutButton}
+        />
+      );
   };
 
   return (

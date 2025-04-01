@@ -23,6 +23,7 @@ const ProductCarousel = () => {
         <h2 className="text-xl font-bold mb-3">키보드</h2>
         {[...Array(skeletonCount)].map(() => (
           <Carousel
+            key={uuidv4()}
             opts={{ loop: true }}
             plugins={[]}
             orientation="horizontal"

@@ -3,13 +3,14 @@ import { User } from '@/lib/utils';
 
 export const useLogin = () => {
   const login = UserAuthStore(state => state.login);
-  const loginUser = async (email: string, password: string) => {
+  const loginUser = async (email: string, passWord: string) => {
     const res = await fetch('http://localhost:3006/api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, passWord }),
     });
     const data = await res.json();
+    console.log('현재 데이터는?', data);
     if (!res.ok) {
       alert(data.message || '로그인 실패');
       return false;
