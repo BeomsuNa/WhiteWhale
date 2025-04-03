@@ -41,7 +41,7 @@ const BuyProductPage = () => {
             channelKey: import.meta.env.VITE_channelKey,
             paymentId: `payment-${crypto.randomUUID()}`,
             orderName: product.productName,
-            totalAmount: product.productPrice * product.quantity, // 단일 품목의 총 금액
+            totalAmount: product.productPrice * product.quantity + 3000, // 단일 품목의 총 금액
             currency: 'CURRENCY_KRW',
             payMethod: 'CARD',
           })) as PaymentResponse | undefined;
