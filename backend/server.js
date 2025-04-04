@@ -5,10 +5,20 @@ import authRoute from './routes/auth.mjs';
 
 const app = express();
 const port = process.env.PORT || 3006;
+const allowOrigins =
+  process.env.NODE_ENV === 'production'
+    ? ['https://whitewhale.onrender.com']
+    : ['http://localhost:5173'];
 
 app.use(
   cors({
-    origin: 'http://localhost:5173',
+    origin(origin, callback) {
+      if (!origin || allowOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error(`CORS 차단됨${origin}`));
+      }
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
