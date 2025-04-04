@@ -10,7 +10,6 @@ export const useLogin = () => {
       body: JSON.stringify({ email, passWord }),
     });
     const data = await res.json();
-    console.log('현재 데이터는?', data);
     if (!res.ok) {
       alert(data.message || '로그인 실패');
       return false;

@@ -5,11 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/radixUi/label';
 import { useLogin } from '@/hooks/useAuth';
 
-interface LoginFormProps {
-  onLogin: (email: string, passWord: string) => void;
-}
-
-const LoginForm: React.FC<LoginFormProps> = () => {
+const LoginForm = () => {
   const [email, setEmail] = useState<string>('');
   const [passWord, setPassWord] = useState<string>('');
   const navigate = useNavigate();

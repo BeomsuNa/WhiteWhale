@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import './App.css';
 import Main from './pages/BackGroundPage';
-import { AuthProvider } from './components/context/AuthContext';
+import { AuthProvider } from './Dummys/AuthContextDummy';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Header from './components/ui/radixUi/Header';
 import { ProductCategoryProvider } from './components/context/ProductCategoryContext';
