@@ -56,7 +56,7 @@ app.get('/products', async (req, res) => {
     const [rows] = await pool.query('select * from products');
     res.json(rows);
   } catch (error) {
-    console.log('데이터 연결 실패');
-    res.status(500).json({ error: '서버오류' });
+    console.error('❌ 상품 조회 오류:', error);
+    res.status(500).json({ error: '서버 오류' });
   }
 });

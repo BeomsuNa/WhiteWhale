@@ -49,16 +49,6 @@ const ProductDetailPage: React.FC<MainProductCardProps> = ({
     return <div>상품을 찾을 수 없습니다.</div>;
   }
 
-  // const handleAddToCart = () => {
-  //   if (orderProductCount === 0) {
-  //     alert('개수를 선택해주세요!');
-  //   } else {
-  //     addToCart({ ...product, quantity: orderProductCount });
-  //     alert('선택하신 상품을 장바구니에 담았습니다!');
-  //     setFinishiCart(true);
-  //   }
-  // };
-
   const goToBaseketPagae = () => {
     navigate('/basket');
   };

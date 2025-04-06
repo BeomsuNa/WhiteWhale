@@ -6,7 +6,6 @@ import SignUp from './sections/Buyer/SignUpPage';
 import MyPage from './pages/Mypage/MyPage';
 import UploadProductPage from './pages/UploadProductPage';
 import ProductEditForm from './sections/Seller/ProductEditForm';
-
 import ProductDetailPage from './pages/ProductDetailPage';
 import AllProductPage from './pages/AllProdcutPage';
 import BasketPage from './sections/Buyer/BasketPage';

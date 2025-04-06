@@ -48,7 +48,6 @@ const LoginForm = () => {
             />
           </section>
         </fieldset>
-
         <Button type="submit" className="m-6">
           로그인
         </Button>
