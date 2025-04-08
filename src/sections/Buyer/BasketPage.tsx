@@ -131,6 +131,7 @@ const BasketPage: React.FC = () => {
           원
         </div>
       </div>
+      <h2>구매하시겠습니까?</h2>
       <Button onClick={goToBuyProductPage} className="my-12">
         구매하기
       </Button>
