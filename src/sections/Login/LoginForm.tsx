@@ -55,10 +55,7 @@ const LoginForm = () => {
           <p>
             아직 아이디가 없으신가요? <a href="/SignUp">회원가입 클릭</a>
           </p>
-          <p>
-            비밀번호가 생각나지 않는다면?
-            <p>번호찾기</p>
-          </p>
+
         </footer>
       </form>
     </article>
