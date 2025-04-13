@@ -46,7 +46,7 @@ const ProductDetailPage: React.FC<MainProductCardProps> = ({
   console.log('받은 curretn:', currentProduct);
   console.log('받은 product:', products);
   if (!currentProduct) {
-    return <div>상품을 찾을 수 없습니다.</div>;
+    return <div>상품을 찾을 수 없습니다. 다시 로그인해주세요</div>;
   }
 
   const goToBaseketPagae = () => {

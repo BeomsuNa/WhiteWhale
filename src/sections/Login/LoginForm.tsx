@@ -55,7 +55,6 @@ const LoginForm = () => {
           <p>
             아직 아이디가 없으신가요? <a href="/SignUp">회원가입 클릭</a>
           </p>
-
         </footer>
       </form>
     </article>
