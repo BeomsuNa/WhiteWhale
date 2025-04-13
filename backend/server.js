@@ -7,7 +7,7 @@ const app = express();
 const port = process.env.PORT || 3006;
 const allowOrigins =
   process.env.NODE_ENV === 'production'
-    ? ['https://whitewhale.onrender.com']
+    ? ['https://white-whale.vercel.app']
     : ['http://localhost:5173'];
 
 app.use(
