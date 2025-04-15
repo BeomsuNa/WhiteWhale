@@ -13,7 +13,6 @@ const MainPageLayOut = () => {
       </div>
       <div className="main-page-layout p-20 ">
         <hr className="border-t border-gray-300 m-5" />
-        <Label className="flex text-lg font-bold mb-5">신상품</Label>
         <ProductCarousel />
       </div>
     </main>
