@@ -3,8 +3,9 @@ import { User } from '@/lib/utils';
 
 export const useLogin = () => {
   const login = UserAuthStore(state => state.login);
+  const API = import.meta.env.VITE_API_URL;
   const loginUser = async (email: string, passWord: string) => {
-    const res = await fetch('http://localhost:3006/api/login', {
+    const res = await fetch(`${API}/api/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, passWord }),

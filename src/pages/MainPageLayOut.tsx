@@ -5,6 +5,7 @@ import { Label } from '@radix-ui/react-label';
 import ProductCarousel from '@/components/ui/Carousel/ProductCarousel';
 import BannerCarousel from '@/components/ui/Carousel/BannerCarousel';
 
+
 const MainPageLayOut = () => {
   return (
     <main>

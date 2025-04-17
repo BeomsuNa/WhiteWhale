@@ -9,7 +9,7 @@ const pool = mysql.createPool({
   user: process.env.DB_USER || 'root',
   password: process.env.DB_PASS || '12345',
   database: process.env.DB_NAME || 'WHITEWHALE',
-  waitForConnections: true,
+  // waitForConnections: true,
 });
 
 export default pool;
