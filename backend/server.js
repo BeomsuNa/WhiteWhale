@@ -30,7 +30,7 @@ app.options('*', cors());
 app.use(express.json()); // ✅ JSON 요청을 처리할 수 있도록 설정
 
 app.use('/api', authRoute);
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
   console.log(`서버실행 완료 :${port}`);
 });
 
