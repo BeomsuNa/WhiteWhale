@@ -7,7 +7,7 @@ const app = express();
 const port = process.env.PORT || 3006;
 const allowOrigins =
   process.env.NODE_ENV === 'production'
-    ? ['https://white-whale.vercel.app']
+    ? ['https://whalekeyboard.shop/api/login']
     : ['http://localhost:5173'];
 
 app.use(
